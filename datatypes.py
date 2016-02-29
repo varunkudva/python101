@@ -27,10 +27,17 @@ def example_tuple():
     x = tuple(int (i) for i in (raw_input().split()))
     print hash(x)
 
+def example_set():
+    raw_input()
+    m = set(map(int,raw_input().split()))
+    raw_input()
+    n = set(map(int, raw_input().split()))
+    res = list(m.symmetric_difference(n))
+    for i in sorted(res):
+         print i
 
-
-        
-if __name__ == '__main__':
+if  __name__ == '__main__':
    #example_list()
-   example_tuple() 
+   #example_tuple() 
+   example_set()
 
