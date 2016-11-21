@@ -11,13 +11,14 @@ def number_needed(a, b):
     # Go through characters in b. pop them
     # if the exist. Else add to hash
     for c in b:
-        if c in a_hash and a_hash[c] > 0:
+        if c in a_hash:
             a_hash[c] -= 1
         else:
-            count += 1
+            a_hash[c] = -1
+
 
     for v in a_hash.values():
-        count += v
+        count += abs(v)
 
     return count
 
