@@ -16,8 +16,3 @@ git clone <>
 git add <filename>
 git commit -m <commit string>
 git push
-
-
-
-
-
