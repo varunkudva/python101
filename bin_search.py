@@ -11,7 +11,7 @@ def bin_search(A, x, findfirst):
             else:
                 low = mid + 1
         elif A[mid] < x:
-            low = mid + 1
+           low = mid + 1
         else:
             high = mid - 1
 
