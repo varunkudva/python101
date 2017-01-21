@@ -4,10 +4,18 @@ Graph Module for programs
 from collections import defaultdict
 
 class Graph():
+    '''
+    Directed graph without weights associated.
+
+    Represented as adjacency list with each
+    node as a key in dict and a list of edges
+    as values
+    '''
     def __init__(self):
         self.graph = defaultdict(list)
 
     def add_edge(self, u, v):
+        # u and v are nodes
         self.graph[u].append(v)
 
     def remove_edge(self, u, v):
