@@ -7,7 +7,8 @@ def can_place(matrix, row, col):
         if matrix[row][i] == 1:
             return False
 
-    # Left upper diagonal
+    # Left upper diagonal, since we place queens columnwise
+    # only the previous diagonal columns are checked.
     for i,j in zip(range(row-1, -1, -1),range(col-1, -1, -1)):
         if matrix[i][j]: return False
     # Left lower diagonal
