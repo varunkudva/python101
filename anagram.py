@@ -1,7 +1,7 @@
 '''
+===================================================
 Problem:
- Find number of characters to be removed to make
- two strings anagrams of each other.
+ Find number of characters to be removed to make  two strings anagrams of each other.
  
 Solution:
 - Maintain a hashmap of 256 characters.
@@ -12,7 +12,9 @@ Solution:
 NOTE:
  If ASCII character set can be assumed, we can
  use 256 byte array instead of a hash.
+===================================================
 '''
+
 def number_needed(a, b):
     freq = dict()
     count = 0
