@@ -29,7 +29,6 @@ def word_search(matrix, sol, word, row, col, idx, N):
             return True
 
         sol[row][col] = 0
-        col += 1
 
     return False
 
