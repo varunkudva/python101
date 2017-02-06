@@ -13,14 +13,13 @@ NOTE:
 '''
 def longest_non_repeating(s):
     maxlen = 0
-    begin, end = 0, 0
-    count = [0] * 128   # character count map
-    valid = True
+    begin, end, counter = 0, 0, 0
+    map = [0] * 128   # character map map
     for end in range(len(s)):
-        count[ord(s[end])] += 1
-        if count[ord(s[end])] > 1:
+        map[ord(s[end])] += 1
+        if map[ord(s[end])] > 1:
             # First repeating character
-            valid = False
+            counter += 1
             if end-begin >= maxlen:
                 maxlen = end-begin
                 sub = s[begin:end]
