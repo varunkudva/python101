@@ -15,7 +15,6 @@ class Node(object):
 
 
 class BinaryTree(object):
-
     """
     Binary Tree Class.
     Methods to insert, delete, traverse etc.
@@ -50,14 +49,13 @@ class BinaryTree(object):
             return 0
         return max(self.max_depth(node.left), self.max_depth(node.right)) + 1
 
-
     def dfs(self, node, val):
         """ DFS to find a value in binary tree """
 
         if node is None:
             return None
         elif node.data == val:
-           return node
+            return node
         else:
             return self.dfs(node.left, val) or self.dfs(node.right, val)
 
@@ -96,7 +94,6 @@ class BinaryTree(object):
                 if node.left: queue.append(node.left)
                 if node.right: queue.append(node.right)
 
-
     def path_search(self, node, data):
         """ Print path to a node """
         if node == None:
@@ -113,4 +110,3 @@ class BinaryTree(object):
         if path:
             path.insert(0, node.data)
             return path
-

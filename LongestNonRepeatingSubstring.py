@@ -20,12 +20,16 @@ def longest_non_repeating(s):
         if map[ord(s[end])] > 1:
             # First repeating character
             counter += 1
+            valid = False
             if end-begin >= maxlen:
                 maxlen = end-begin
                 sub = s[begin:end]
             while not valid:
                 if s[begin] == s[end]:
                     valid = True
+                else:
+                    # reset entries in the map
+                    map[ord(s[begin])] = 0
                 begin += 1
 
     return maxlen, sub

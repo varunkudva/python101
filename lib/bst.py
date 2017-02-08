@@ -24,6 +24,9 @@ class Bst(BinaryTree):
                         node.right = Node(val)
                     node = node.right
 
+    def inorder_successor(self, node):
+    def delete(self,val):
+        super.
     def insert(self, node, val):
         """ Insert recursive into binary tree """
         if self.root is None:
