@@ -25,8 +25,41 @@ class Bst(BinaryTree):
                     node = node.right
 
     def inorder_successor(self, node):
-    def delete(self,val):
-        super.
+        while node.left:
+            node = node.left
+        return node
+
+    def delete(self, node, val):
+        """
+        Delete node from a bst
+        - Leaf node: Just delete and return none
+        - single child: Return child node to parent
+        - Two children: Find inorder successor. Copy inorder successors data into
+          node, and recursively delete inorder successor
+        """
+
+        if node is None:
+            return None
+
+        if node.data == val:
+            if node.left is None and node.right is None:
+                # leaf node
+                return None
+            elif node.left is None or node.right is None:
+                # single child
+                return node.right if not node.left else node.left
+            else:
+                # node with two children
+                succ = self.inorder_successor(node.right)
+                node.data = succ.data
+                node.right = self.delete(node.right, succ.data)
+        else:
+            if val < node.data:
+                node.left = self.delete(node.left, val)
+            elif val > node.data:
+                node.right = self.delete(node.right, val)
+
+
     def insert(self, node, val):
         """ Insert recursive into binary tree """
         if self.root is None:
