@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 """
 graph.py: Simple graph module
 """
@@ -6,9 +5,12 @@ __author__ = "vkudva"
 
 from collections import defaultdict
 
+CYCLES_DG = "../tests/cycles.txt"
+TOPO_DAG = "../tests/topo.txt"
+
 class Graph():
     '''
-    Directed graph without weights associated.
+    Directed graph (Digraph) without weights associated.
 
     Represented as adjacency list with each
     node as a key in dict and a list of edges
@@ -40,21 +42,29 @@ class Graph():
         self.adj[u].remove(v)
 
     def bfs(self, source):
+        """ Breadth First traversal from a single source.
+        visited keeps track of nodes already seen on the
+        traversal. Can be used to check if a node is
+        connected to the source
+        """
         queue = []
-        visited = [False] * len(self.adj)
+        self.visited = [False] * len(self.adj)
 
+        # add source vertex to queue
         queue.append(source)
-        visited[source] = True
+        self.visited[source] = True
 
         while queue:
             u = queue.pop(0)
             print u
-            for i in self.adj[u]:
-                if visited[i] is False:
-                    queue.append(i)
-                    visited[i] = True
+            for v in self.adj[u]:
+                if visited[v] is False:
+                    # mark and append to queue
+                    visited[v] = True
+                    queue.append(v)
 
     def dfs_search(self):
+        """ DFS from all source to all vertices """
         for v in range(self.vertices):
             self.visited = [False] * self.vertices
             self.count = 0 # initialize connected vertex count
@@ -63,13 +73,10 @@ class Graph():
             print
             print "Vertices connected {}".format(v, self.count)
 
-    def dfs_search_2(self):
-        self.visited = [False] * self.vertices
-        for u in range(self.vertices):
-            if not self.visited[u]:
-                self.dfs(u)
-
     def dfs(self, u):
+        """ DFS from source vertex u. Count keeps track of number
+        of vertices connected to a given source vertex
+        """
         self.count += 1
         self.visited[u] = True
         print u,
@@ -102,28 +109,63 @@ class Graph():
                 self.topo_sort_dfs(u, tlist)
         return tlist
 
+    def dfs_cycle(self, v):
+        """
+        modified dfs to check for cycles in Digraph
+        """
+        self.visited[v] = True
+        self.on_stack[v] = 1
+        for w in self.adj[v]:
+            if self.cycle:
+                return
+            if self.on_stack[w]:
+                # cycle
+                x = v
+                self.cycle.insert(0, w)
+                while x != w:
+                    # save cycle in stack
+                    self.cycle.insert(0, x)
+                    x = self.path_to[x]
+                self.cycle.insert(0, w)
+            elif not self.visited[w]:
+                self.path_to[w] = v
+                self.dfs_cycle(w)
+
+        self.on_stack[v] = 0
+
+    def directed_cycle(self):
+        """
+        on_stack: keeps track of all the nodes visited on a given recursive
+        call from source vertex.
+        path_to: keeps track of previous vertex connecting to this vertex and
+        can be used to backtrack back to the source vertex from a given vertex.
+        cycle[]: is a stack maintaining the cycle found
+        :return:
+        """
+        self.on_stack = [0] * self.vertices
+        self.path_to = [0] * self.vertices
+        self.visited = [False] * self.vertices
+        self.cycle = []
+        for u in range(self.vertices):
+            if not self.visited[u]:
+                self.dfs_cycle(u)
+
+            if self.cycle:
+                print "Cycle: {}".format(",".join(map(str,self.cycle)))
+                return True
+
+        print "No cycle found!!"
+
 
 if __name__ == '__main__':
-    """
-    Example Graph
-    g = Graph(6)
-    g.add_edge(5,0)
-    g.add_edge(5,2)
-    g.add_edge(2,3)
-    g.add_edge(3,1)
-    g.add_edge(4,0)
-    g.add_edge(4,1)
-    # print g.adj
-    # g.dfs_search()
-    g.dfs_search_2()
-    # print g.bfs(5)
-    """
-    g = Graph(10)
-    g.add_edge(2, 9)
-    g.add_edge(9,4)
-    g.add_edge(4,5)
-    g.add_edge(3,4)
-    g.add_edge(3,7)
-    g.add_edge(8,7)
-    g.add_edge(7,5)
-    print g.topo_sort()
+    filename = CYCLES_DG
+    with open(filename) as fd:
+        V = int(fd.readline())
+        E = int(fd.readline())
+        g = Graph(V)
+        for lines in range(E):
+            u, v = tuple(map(int, fd.readline().split()))
+            g.add_edge(u, v)
+
+        #g.dfs(0)
+        g.has_cycle()

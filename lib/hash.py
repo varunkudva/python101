@@ -50,8 +50,8 @@ class HashTable(object):
 
 if __name__ == '__main__':
     h = HashTable(100)
-    h['a'] = 10
-    h['b'] = 20
+    h['ab'] = 10
+    h['ba'] = 20
     h['c'] = 50
 
     del h['b']
