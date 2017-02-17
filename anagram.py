@@ -1,8 +1,9 @@
 '''
 ===================================================
 Problem:
- Find number of characters to be removed to make  two strings anagrams of each other.
- 
+ Find number of characters to be removed to make  two strings anagrams of
+each other.
+
 Solution:
 - Maintain a hashmap of 256 characters.
 - For each character in string A, increment frequency[c].
