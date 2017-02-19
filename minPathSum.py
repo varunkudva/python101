@@ -28,6 +28,7 @@ class Solution(object):
 
 grid = [[1,2,5],[3,2,1]]
 print Solution().minPathSum(grid)
+print Solution().minPathSum([[1,2],[1,1]])
         m =  len(grid)
         n = len(grid[0])
         for row in range(0, m):
@@ -41,4 +42,3 @@ print Solution().minPathSum(grid)
         return grid[m-1][n-1]
 
 
-print Solution().minPathSum([[1,2],[1,1]])
