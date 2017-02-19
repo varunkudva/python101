@@ -1,4 +1,8 @@
+"""
+Maximum sum subarray (continuous)
+Kadanes algorithm
 
+"""
 A = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
 
 def maxSum(A):
