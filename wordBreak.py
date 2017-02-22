@@ -1,6 +1,8 @@
 d = [ 'apple', 'pie', 'gold', 'rush', 'sand', 'dune']
 
 def word_break_recur(input, d):
+    """This is a backtracking solution
+    for wordbreak problem"""
     for i in range(1, len(input)+1):
         word = input[0:i]
         if word in d:
