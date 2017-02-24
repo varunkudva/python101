@@ -1,20 +1,30 @@
-class Solution(object):
-    def wordBreak(self, s, wordDict, result):
-        """
-        :type s: str
-        :type wordDict: List[str]
-        :rtype: List[str]
-        """
-        if len(s) == 0:
-            print result
-            return True
+"""
+Given a valid sentence without any spaces between the words and a dictionary of
+valid English words, find all possible ways to break the sentence in individual
+dictionary words.
 
-        for i in range(1, len(s)+1):
-            word = s[0:i]
-            if word in wordDict:
-                self.wordBreak(s[i:], wordDict, result + word + " ")
+Backtracking Solution
+"""
+def wordbreak(res, s, d):
+    if len(s) == 0:
+        if res:
+            print " ".join(res)
+        return
 
-s = "catsanddog"
-d = ["cat", "cats", "and", "sand", "dog"]
-result = ""
-Solution().wordBreak(s, d,result)
+    for i in range(1, len(s)+1):
+        word = s[0:i]
+        if word in d:
+            res.append(word)
+            wordbreak(res, s[i:], d)
+            res.pop()
+
+    return None
+
+
+if __name__ == '__main__':
+    dictionary = ["mobile","samsung","sam","sung",
+                  "man","mango", "icecream","and",
+                  "go","i","love","ice","cream", "like"]
+
+    str = "ilikeicecreamandmango"
+    wordbreak([], str, dictionary)
