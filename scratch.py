@@ -1,14 +1,20 @@
-def custom_print():
-    for num in range(1, 101):
-        if num % 3 == 0  and num % 5 == 0:
-            print "FizzBuzz"
-        elif num % 3 == 0:
-            print "Fizz"
-        elif num % 5 == 0:
-            print "Buzz"
+
+def min_deletes(n, arr):
+    hmap = {}
+    max = 1
+    for val in arr:
+        if val in hmap:
+            hmap[val] += 1
+            if hmap[val] > max:
+                max = hmap[val]
         else:
-            print num
+            hmap[val] = 1
+    print n - max
 
 
+
+n = int(raw_input().strip())
+arr = map(int,raw_input().strip().split(' '))
+min_deletes(n, arr)
 
 
