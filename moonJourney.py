@@ -7,10 +7,23 @@ def moon_pair(N):
     total_pairs = (N * (N-1)) / 2
     for i in range(0, N):
         if not visited[i]:
-            count = dfs(i, visited)
+            count = bfs(i, visited)
             exclude_pair += (count * (count-1))/2
 
     return total_pairs - exclude_pair
+
+def bfs(i, visited):
+   queue = []
+   queue.append(i)
+   count = 0
+   while queue:
+       i = queue.pop(0)
+       visited[i] = 1
+       count += 1
+       for j in adj[i]:
+           if not visited[j]:
+               queue.append(j)
+   return count
 
 def dfs(i, visited, count=0):
     visited[i] = 1

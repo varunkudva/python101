@@ -1,6 +1,28 @@
 """
+Dice Throw Problem
+
 Given n dice each with m faces, numbered from 1 to m, find the number of ways to get sum X.
 X is the summation of values on each face when all the dice are thrown.
+
+DP Solution:
+Lets define optimal structure for problem first
+
+let w[i][j] represent no. of ways to get sum j with i dices, with m faces
+on each dice:
+
+    w[1][1] = 1, w[1][2] = 1, w[1][m] = 1
+    w[1][j] = 1 if j <=  m, i.e theres only one way to get each face
+
+    we want to find w[n][X]
+
+    Lets say the nth dice rolls to 1, in which case, no. of ways becomes w[n-1][j-1]
+    which is basically obtain sum j-1 with n-1 dices.
+    Lets say the nth dice rolls to 2, in which case, no. of ways becomes w[n-1][j-2]
+    which is basically obtain sum j-2 with n-2 dices.
+
+Define recursive solution for subproblem
+
+        w[i,j] = sum[w[i-1, j-k]], where k = (1, m)
 """
 
 
