@@ -1,8 +1,11 @@
 """
 Knapsack 0-1 problem:
+
 Give a list of items with weights {w1, w2 .... wn} and values
 {v1, v2,....vn}, find subset of items with maximum value given
 total weight <= W.
+
+DP Solution:
 
 Let A[i,j] be the maximum value for first i items with a weight
 of upto j pounds. The recurrence relation for subproblem
