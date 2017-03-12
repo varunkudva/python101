@@ -1,5 +1,9 @@
 """
-Maximum sum subarray (continuous)
+Largest sum contiguous subarray
+Given a array, find a contiguous sub-array within the array which has the largest sum.
+Array has both positive and negative integers
+
+Solution:
 Kadanes algorithm
 
 """

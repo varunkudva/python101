@@ -23,17 +23,19 @@ def maximal_submatrix(M):
     S = [[0] * n for _ in range(m)]
     max = 0
 
+    S[0] = M[0]
     for i in range(m):
-        for j in range(n):
-            if i == 0 or j == 0:
-                S[i][j] = M[i][j]
+        S[i][0] = M[i][0]
+
+    for i in range(1, m):
+        for j in range(1, n):
+            if M[i][j] == 0:
+                S[i][j] = 0
             else:
-                if M[i][j] == 0:
-                    S[i][j] = 0
-                else:
-                    S[i][j] = min(S[i-1][j], S[i][j-1], S[i-1][j-1])
-                    if S[i][j] > max:
-                        max = S[i][j]
+                S[i][j] = min(S[i-1][j], S[i][j-1], S[i-1][j-1]) + 1
+                if S[i][j] > max:
+                    max = S[i][j]
+    print S
     return max
 
 if __name__ == '__main__':
