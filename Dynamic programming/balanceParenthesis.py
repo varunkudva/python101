@@ -4,38 +4,36 @@ Solution:
 """
 
 
-def add_parenthesis_2(n, left=0, right=0, res=""):
+def add_parenthesis_2(n, left, right, idx, res):
     # base and error cases
     if left < right:
         return
     if left == n and right == n:
-        print res
+        print "".join(res)
     else:
-        if left < n:
-            left += 1
-            res += '('
-            add_parenthesis_2(n, left, right, res)
-        if right < left:
-            right += 1
-            res += ')'
-            add_parenthesis_2(n, left, right, res)
+        res[idx] = '('
+        add_parenthesis_2(n, left+1, right, idx+1, res)
+
+        res[idx]= ')'
+        add_parenthesis_2(n, left, right+1, idx+1, res)
 
 
-def add_parenthesis(left_rem, right_rem, res=""):
+def add_parenthesis(left_rem, right_rem, idx, res):
     if left_rem < 0 or right_rem < left_rem:
         return
 
     if left_rem == 0 and right_rem == 0:
-        print res
+        print "".join(res)
     else:
-        if left_rem:
-            res += '('
-            add_parenthesis(left_rem - 1, right_rem, res)
+        res[idx] = '('
+        add_parenthesis(left_rem - 1, right_rem, idx + 1, res)
 
-        if right_rem:
-            res += ')'
-            add_parenthesis(left_rem, right_rem - 1, res)
+        res[idx] = ')'
+        add_parenthesis(left_rem, right_rem - 1, idx + 1, res)
 
 
-# add_parenthesis(2, 2)
-add_parenthesis_2(2)
+if __name__ == '__main__':
+    n = 3
+    res = [""] * n * 2
+    #add_parenthesis(n, n, 0, res)
+    add_parenthesis_2(n, 0, 0, 0, res)
