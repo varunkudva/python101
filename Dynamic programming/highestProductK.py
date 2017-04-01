@@ -15,6 +15,6 @@ def highest_product(arr, k, n):
     print prod
     return prod[k][n-1]
 
-arr = [4, 9, 2, 3, -6, -8, 1, 5]
+arr = [4, 9, 2, 3, 6, 8, 1, 5]
 print highest_product(arr, 3, len(arr))
 
