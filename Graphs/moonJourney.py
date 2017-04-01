@@ -1,4 +1,16 @@
-# Enter your code here. Read input from STDIN. Print output to STDOUT
+"""
+The member states of the UN are planning to send people to the Moon. But there is a problem. In line
+with their principles of global unity, they want to pair astronauts of different countries.
+There are trained astronauts numbered from to . But those in charge of the mission did not
+receive information about the citizenship of each astronaut. The only information they have is that some
+particular pairs of astronauts belong to the same country.
+
+Your task is to compute in how many ways they can pick a pair of astronauts belonging to different
+countries. Assume that you are provided enough pairs to let you identify the groups of astronauts even
+though you might not know their country directly. For instance, if are astronauts from the same
+country; it is sufficient to mention that and are pairs of astronauts from the same country
+without providing information about a third pair .
+"""
 from collections import defaultdict
 
 def moon_pair(N):
