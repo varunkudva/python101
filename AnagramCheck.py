@@ -1,31 +1,41 @@
-'''
+"""
 Problem:
+
 Check if two strings are anagrams of each other.
 
 Approach/Solution:
 
+Maintain a frequency hashmap which stores the count of occurence
+of characters.
+Increment the count while parsing the first string.
+Decrement the count while parsing second string.
+
+check if count is 0 for all elements in the hashmap
+
 Notes:
 
 Compexity:
+
  Time: O(n)
- Space: O(n)
+ Space: Constant if considering only alphabets.
+        O(k) where k is the character set count.
 
 Source:
 None
-'''
-from collections import defaultdict
+"""
+
 
 def anagram_check(first, second):
-    charmap = defaultdict(int)
+    charmap = [0] * 256
     for c in first:
-        charmap[c] += 1
+        charmap[ord(c)] += 1
     for c in second:
-        charmap[c] -= 1
+        charmap[ord(c)] -= 1
 
-    for count in charmap.itervalues():
-        if count: return False
+    if all(c == 0 for c in charmap):
+        return True
 
-    return True
+    return False
 
 if __name__ == '__main__':
     assert anagram_check("iceman", "cinema") == True
