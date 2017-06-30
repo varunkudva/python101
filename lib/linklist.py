@@ -64,3 +64,4 @@ class Sll(object):
             curr = curr.next
 
         return False
+    
