@@ -1,3 +1,22 @@
+"""
+Problem:
+
+
+Approach/Solution:
+
+
+Notes:
+
+Compexity:
+ Time: O(n)
+ Space:
+
+
+Source:
+None
+"""
+
+
 # find an element in a sorted rotated array
 
 def search(arr, low, high, x):

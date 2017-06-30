@@ -1,3 +1,22 @@
+"""
+Problem:
+
+
+Approach/Solution:
+
+
+Notes:
+
+Compexity:
+ Time: O(n)
+ Space:
+
+
+Source:
+None
+"""
+
+
 class Interval(object):
     def __init__(self, s=0, e=0):
         self.start = s

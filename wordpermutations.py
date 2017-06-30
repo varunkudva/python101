@@ -1,3 +1,21 @@
+"""
+Problem:
+
+
+Approach/Solution:
+
+
+Notes:
+
+Compexity:
+ Time: O(n)
+ Space:
+
+
+Source:
+None
+"""
+
 
 def permute(res, input):
     if len(res) == len(input):

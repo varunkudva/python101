@@ -1,3 +1,20 @@
+"""
+Problem:
+
+
+Approach/Solution:
+
+
+Notes:
+
+Compexity:
+ Time: O(n)
+ Space:
+
+
+Source:
+None
+"""
 
 
 def search_matrix(matrix, sol, word, N):

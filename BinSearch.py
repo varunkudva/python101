@@ -1,3 +1,22 @@
+"""
+Problem:
+
+
+Approach/Solution:
+
+
+Notes:
+
+Compexity:
+ Time: O(n)
+ Space:
+
+
+Source:
+None
+"""
+
+
 '''
 ===================================================
 Problem:
