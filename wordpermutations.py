@@ -17,15 +17,17 @@ None
 """
 
 
-def permute(res, input):
-    if len(res) == len(input):
+def permute(input, res='', idx=0, n=0):
+    """
+    backtracking
+    """
+    n = len(input)
+    if len(res) == n:
         print res,
     else:
-        for char in input:
-            if char not in res:
-                permute(res+char, input)
+        for i in range(idx, n):
+            permute(input, res+input[i], idx+1, n)
 
-#permute("", 'abcd')
 
 def unique_digit_num_count(n):
     unique_digit = 9
@@ -65,9 +67,12 @@ def pattern_match(str, pattern, j=0, n=0):
             return pattern_match(str[i+1:], pattern, j+1, n)
     return False
 
-print pattern_match('aa', 'a', n=len('aa'))
-print pattern_match('aa', 'aa', n=len('aa'))
-print pattern_match('aaa', 'aa', n=len('aaa'))
-print pattern_match('aa', '*', n=len('aa'))
+def test_pattern_match():
+    print pattern_match('aa', 'a', n=len('aa'))
+    print pattern_match('aa', 'aa', n=len('aa'))
+    print pattern_match('aaa', 'aa', n=len('aaa'))
+    print pattern_match('aa', '*', n=len('aa'))
 
 
+if __name__ == '__main__':
+    permute('abc')

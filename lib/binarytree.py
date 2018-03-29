@@ -27,8 +27,8 @@ class BinaryTree(object):
     def insert(self, val):
         ''' Insert Node into Binary Tree '''
 
-        new = Node(val)
         if self.root is None:
+            new = Node(val)
             self.root = new
         else:
             queue = [self.root]  # level order queue

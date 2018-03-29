@@ -1,24 +1,5 @@
 """
 Problem:
-
-
-Approach/Solution:
-
-
-Notes:
-
-Compexity:
- Time: O(n)
- Space:
-
-
-Source:
-None
-"""
-
-
-'''
-Problem:
 Find number of characters to be removed to make two strings anagrams of
 each other.
 
@@ -37,7 +18,7 @@ Time: O(n) Space: O(n)
 
 Source:
 hackerrank
-'''
+"""
 
 from collections import defaultdict
 
