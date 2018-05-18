@@ -1,3 +1,22 @@
+"""
+Problem:
+
+
+Approach/Solution:
+
+
+Notes:
+
+Compexity:
+ Time: O(n)
+ Space:
+
+
+Source:
+None
+"""
+
+
 class LFUCache(object):
     def __init__(self, capacity):
         """

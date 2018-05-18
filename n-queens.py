@@ -1,3 +1,21 @@
+"""
+Problem:
+
+
+Approach/Solution:
+
+
+Notes:
+
+Compexity:
+ Time: O(n)
+ Space:
+
+
+Source:
+None
+"""
+
 
 def can_place(matrix, row, col):
     ''' if any of the previous queens is

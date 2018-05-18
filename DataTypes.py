@@ -1,4 +1,22 @@
 #!/usr/bin/python -tt
+"""
+Problem:
+
+
+Approach/Solution:
+
+
+Notes:
+
+Compexity:
+ Time: O(n)
+ Space:
+
+
+Source:
+None
+"""
+
 
 import sys
 

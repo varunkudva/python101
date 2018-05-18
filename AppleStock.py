@@ -22,7 +22,7 @@ Compexity:
  Space: O(n)
 
 Source:
-https://www.interviewcake.com/question/python/stock-price>
+https://www.interviewcake.com/question/python/stock-price
 """
 def get_max_profit(stock_prices):
     if len(stock_prices) < 2:

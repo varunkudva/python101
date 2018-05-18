@@ -11,7 +11,7 @@ TOPO_DAG = "../tests/topo.txt"
 
 class Graph():
     '''
-    Directed graph (Digraph) without weights associated.
+    Undirected graph (Digraph) without weights associated.
 
     Represented as adjacency list with each
     node as a key in dict and a list of edges
@@ -37,6 +37,7 @@ class Graph():
         # u and v are nodes
         self.num_edges += 1
         self.adj[u].append(v)
+        self.adj[v].append(u)
 
     def remove_edge(self, u, v):
         self.num_edges -= 1
