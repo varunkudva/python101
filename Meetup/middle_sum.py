@@ -1,3 +1,31 @@
+"""
+Problem:
+Given an array of integers, find if there exists an element in array where
+sum of elements to its left == sum of elements to its right.
+
+Return -1 if no such element exists
+
+Algorithmic Pattern:
+Greedy
+
+
+Approach/Solution:
+Initialize left_sum and right_sum to 0.
+Add elements to left_sum if left_sum < right_sum
+Add elements to right_sum if right_sum < left_sum
+if they are equal and right_sum_idx and left_sum_idx are seperated by 2. return left_sum+1
+
+Caveats:
+
+Notes:
+
+Compexity:
+ Time: O(n)
+ Space: O(n)
+
+Source:
+<URL>
+"""
 def mid_sum(arr):
     i, j = 0, len(arr) - 1
     lsum, rsum = 0, 0

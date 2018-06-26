@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """
 This is a simple tic-tac-toe terminal game with 2 players.
 """
@@ -96,7 +97,7 @@ class TicTacToe(object):
                 # retry exception while loop
                 try:
                     print ("{}'s move. Enter position: ".format(self.players_dict[player_num].name))
-                    r, c = map(int, input().strip().split())
+                    r, c = map(int, raw_input().strip().split())
                     if r < 0 or r > 2: raise Exception
                     if c < 0 or c > 2: raise Exception
                 except:
@@ -121,10 +122,10 @@ class TicTacToe(object):
         icon = None
 
         while player_num <= 2:
-            name = input('Enter player{} name: '.format(player_num))
+            name = raw_input('Enter player{} name: '.format(player_num))
             if player_num == 1:
                 while icon != 'X' and icon != 'O':
-                    icon = input("Please choose your icon: X or O: ")
+                    icon = raw_input("Please choose your icon: X or O: ")
             else:
                 icon = 'X' if self.players_dict[1].icon == 'O' else 'O'
 
@@ -137,5 +138,3 @@ class TicTacToe(object):
 
 if __name__ == '__main__':
     TicTacToe().start()
-
-

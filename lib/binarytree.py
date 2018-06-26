@@ -34,12 +34,15 @@ class BinaryTree(object):
             queue = [self.root]  # level order queue
             while queue:
                 node = queue.pop(0)
-                if node.left == None:
+                if node.left is None:
                     node.left = Node(val)
-                elif node.right == None:
+                    break
+                elif node.right is None:
                     node.right = Node(val)
+                    break
                 else:
-                    queue.append([node.left, node.right])
+                    queue.append(node.left)
+                    queue.append(node.right)
 
     def delete(self, val):
         pass
@@ -94,19 +97,28 @@ class BinaryTree(object):
                 if node.left: queue.append(node.left)
                 if node.right: queue.append(node.right)
 
-    def path_search(self, node, data):
+    def path_search(self, data):
+        return self._path_search(self.root, data)
+
+    def _path_search(self, node, data):
         """ Print path to a node """
-        if node == None:
+        if node is None:
             return None
+
         if node.data == data:
+            # insert node into path
             path = []
             path.insert(0, node.data)
             return path
-        path = self.path_search(node.left, data)
+
+        path = self._path_search(node.left, data)
         if path:
+            # data found. Add this node in path
             path.insert(0, node.data)
             return path
-        path = self.path_search(node.right, data)
+
+        path = self._path_search(node.right, data)
         if path:
+            # data found. Add this node in path
             path.insert(0, node.data)
             return path

@@ -1,7 +1,5 @@
 """
-Single linked list
-Double linked list
-Circular linked list
+Single linked list Double linked list Circular linked list
 """
 
 
@@ -20,7 +18,8 @@ class Sll(object):
         self.tail = None
 
     def push(self, val):
-        """ Insert node at begining of list """
+        """ Insert at head of list """
+
         new = Node(val)
         if self.head is None:
             self.head = new
@@ -29,12 +28,13 @@ class Sll(object):
             self.head = new
 
     def pop(self):
-        """ Delete from begining of list """
+        """ Delete from head of list """
         if self.head is None:
             return None
 
         val = self.head.data
         if self.head.next is None:
+            # last node
             self.head = None
 
         return val
@@ -64,4 +64,50 @@ class Sll(object):
             curr = curr.next
 
         return False
-    
+
+class Dll(object):
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+    def enqueue(self, val):
+        """
+        Enqueue at end of the list
+        :param val:
+        :return:
+        """
+        new = Node(val)
+        if self.head is None:
+            self.tail = self.head = val
+        else:
+            new.prev = self.tail
+            self.tail.next = new
+            self.tail = self.tail.next
+
+    def dequeue(self, val):
+        """
+        Dequeue
+        :param val:
+        :return:
+        """
+        if self.head:
+            node = self.head
+            self.head = self.head.next
+            return node
+
+        return None
+
+    def push(self, val):
+        """
+
+        :param val:
+        :return:
+        """
+        pass
+    def delete(self):
+        pass
+
+class Cll(object):
+    def __init__(self):
+        pass
+

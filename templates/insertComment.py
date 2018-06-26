@@ -1,51 +1,41 @@
 #!/usr/bin/python
-
-problem_string = '''"""
-Problem:
-
-
-Approach/Solution:
-
-
-Notes:
-
-Compexity:
- Time: O(n)
- Space:
-
-
-Source:
-None
-"""
-'''
 import sys
-def main(filename):
-    global problem_string
+
+TEMPLATE_FILE = 'template.py'
+
+def insert_comment(src_file):
     text = ''
-    with open(filename) as fd:
+    comment_str = ''
+
+    # read comment string from template
+    with open(TEMPLATE_FILE) as fd:
+        comment_str = fd.read()
+
+    with open(src_file) as fd:
         if fd.readline().startswith('"""'):
+            # comment exists already
             return
         else:
             fd.seek(0)
             line = fd.readline()
             if line.startswith('#!'):
-                problem_string = line + problem_string
+                comment_str = line + comment_str
                 text = fd.read()
             else:
                 fd.seek(0)
                 text = fd.read()
 
-    with open(filename, 'w') as fd:
+    with open(src_file, 'w') as fd:
         if text.startswith('\n\n'):
-            fd.write(problem_string + text)
+            fd.write(comment_str + text)
         elif text.startswith('\n'):
-            fd.write(problem_string + '\n' + text)
+            fd.write(comment_str + '\n' + text)
         else:
-            fd.write(problem_string + '\n\n' + text)
+            fd.write(comment_str + '\n\n' + text)
 
 
 if __name__ == '__main__':
-    filename = sys.argv[1]
-    if '.py' in filename:
+    src_file = sys.argv[1]
+    if '.py' in src_file:
         # only in python files
-        main(filename)
+        insert_comment(src_file)

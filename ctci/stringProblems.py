@@ -1,4 +1,24 @@
+"""
+Problem:
+All string related problems from CTCI
 
+
+Algorithmic Pattern:
+<BruteForce, Greedy, HashTable, DP, Divide and Conquer, Binary, Backtracking>
+
+Approach/Solution:
+
+Caveats:
+
+Notes:
+
+Compexity:
+ Time: O(n)
+ Space: O(n)
+
+Source:
+<URL>
+"""
 def reverse_string(str):
     """
     very low level reverse string API strings are immutable. So, have to
@@ -17,7 +37,10 @@ def reverse_string(str):
 
     return ''.join(str)
 
-if __name__ == '__main__':
+def test_reverse_string():
     print reverse_string("invictus")
     # extended slice
     print "hollywood"[::-1]
+
+if __name__ == '__main__':
+    test_reverse_string()
