@@ -16,17 +16,18 @@ Source:
 None
 """
 
+def permute(s, res=''):
 
-def permute(input, res='', idx=0, n=0):
-    """
-    backtracking
-    """
-    n = len(input)
-    if len(res) == n:
+    if len(res) == len(s):
         print res,
-    else:
-        for i in range(idx, n):
-            permute(input, res+input[i], idx+1, n)
+
+    # candidate list
+    for char in s:
+         # is_valid_candidate
+        if char not in res:
+            #make_move, unmake_move
+            permute(s, res+char)
+
 
 
 def unique_digit_num_count(n):
@@ -76,3 +77,5 @@ def test_pattern_match():
 
 if __name__ == '__main__':
     permute('abc')
+    permute('')
+    permute('ab')

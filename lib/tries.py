@@ -11,6 +11,31 @@ class Node():
         self.words = 0
         self.prefixes = 0
 
+class Trie2(object):
+    def __init__(self):
+        self.root = {}
+
+    def add_word(self, word):
+        node = self.root
+        for char in word:
+           if node[char] is None:
+               node[char] = {}
+           node = node[char]
+        node['*'] = None
+
+    def find_word(self, word):
+        node = self.root
+        for char in word:
+            if node[char]:
+                node = node[char]
+            else:
+                return False
+        # check if end of word exists
+        #  in last node
+        if node['*']:
+            return True
+
+
 class Trie():
     def __init__(self):
         # initialize trie root
