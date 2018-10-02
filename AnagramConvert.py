@@ -21,6 +21,7 @@ hackerrank
 """
 
 from collections import defaultdict
+import unittest
 
 def convert_to_anagram(a, b):
     freq = defaultdict(int)
@@ -39,8 +40,10 @@ def convert_to_anagram(a, b):
 
     return count
 
+class TestAnagramConvert(unittest.TestCase):
+    def test_equals(self):
+       self.assertEqual(convert_to_anagram("austin", "texas"), 5)
+       self.assertEqual(convert_to_anagram("london", "sydney"), 8)
+
 if __name__ == '__main__':
-    # case 1
-    assert convert_to_anagram("austin", "texas") == 5
-    # case 2
-    assert convert_to_anagram("london", "sydney") == 8
+    unittest.main()

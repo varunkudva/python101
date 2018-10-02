@@ -60,29 +60,31 @@ class Bst(BinaryTree):
                 node.right = self.delete(node.right, val)
 
 
-    def insert(self, node, val):
+    def insert_node(self, node, val):
+        if node is None:
+            return Node(val)
+        if val < node.data:
+            node.left = self.insert_node(node.left, val)
+        elif val > node.data:
+            node.right = self.insert_node(node.right, val)
+
+        return node
+
+    def insert(self, val):
         """ Insert recursive into binary tree """
         if self.root is None:
             self.root = Node(val)
         else:
-            if node is None:
-                return Node(val)
-            if val < node.data:
-                node.left = self.insert(node.left, val)
-            elif val > node.data:
-                node.right = self.insert(node.right, val)
+            self.insert_node(self.root, val)
 
-            return node
-
-
-        def delete(self, val):
-            pass
+    def delete(self, val):
+        pass
 
 if __name__ == '__main__':
     bst = Bst()
     input = [100, 20, 500, 10, 30, 40, 50, 400]
     for val in input:
-        bst.insert(bst.root, val)
+        bst.insert(val)
     bst.print_levelorder()
     bst.print_inorder(bst.root)
 

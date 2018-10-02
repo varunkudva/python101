@@ -42,6 +42,7 @@ class Graph():
     def remove_edge(self, u, v):
         self.num_edges -= 1
         self.adj[u].remove(v)
+        self.adj[v].remove(u)
 
     def bfs(self, source):
         """ Breadth First traversal from a single source.
