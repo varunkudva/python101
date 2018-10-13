@@ -1,16 +1,19 @@
 """
-Problem:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PROBLEM:
 Given a non-empty string s, you may delete at most one character. Judge whether you can make it a palindrome.
 
 Algorithmic Pattern:
 Greedy
 
 Approach:
-
+Whats a palindrome. Reads the same forwards and backwards. Which means first letter == last letter.
+second == second from last. So it has even number of characters.
 
 Source:
 https://leetcode.com/problems/valid-palindrome-ii/description/
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 """
 class Solution(object):
     def validPalindrome(self, s):

@@ -1,9 +1,13 @@
 """
 Problem:
-
+Merge overlapping intervals
 
 Approach/Solution:
 
+Sort based on start time
+Append first interval in result.
+If next interval start time is less than results end_time, update res
+end_time with next interval end_time.
 
 Notes:
 
