@@ -1,19 +1,19 @@
 """
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Problem:
+PROBLEM:
 
 
-Approach/Solution:
+APPROACH/SOLUTION:
 
 
-Notes:
+NOTES:
 
-Compexity:
+COMPEXITY:
  Time: O(n)
  Space: Constant if considering only alphabets.
         O(k) where k is the character set count.
 
-Source:
+SOURCE:
 None
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 """

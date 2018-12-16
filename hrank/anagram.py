@@ -1,4 +1,23 @@
+"""
+Problem:
 
+
+Algorithmic Pattern:
+<BruteForce, Greedy, HashTable, DP, Divide and Conquer, Binary, Backtracking>
+
+Approach/Solution:
+
+Caveats:
+
+Notes:
+
+Compexity:
+ Time: O(n)
+ Space: O(n)
+
+Source:
+<URL>
+"""
 def main():
     # A G T C genes
     n = int(raw_input().strip())

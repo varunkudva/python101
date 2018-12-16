@@ -1,4 +1,5 @@
 """
+    ova_file = glob.glob(params.build_dir +'/vms/vmware-sensor*')
 kth smallest/largest element
 - use quickselect algorithm (part of quicksort)
   to choose pivot element which is at index k-1

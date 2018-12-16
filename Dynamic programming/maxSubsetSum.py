@@ -22,6 +22,16 @@ def maxSum(A):
             min_idx = i+1
     print min_idx, max_idx, A[min_idx:max_idx+1]
 
+# The bruteforce approach
+def maxsum_brute(A):
+    max = A[0]
+    for i in range(len(A)):
+        sum = 0
+        for j in range(i, len(A)):
+            sum += A[j]
+            if sum > max:
+                max = sum
+    return max
 
-
-maxSum(A)
+#maxSum(A)
+print maxsum_brute(A)
