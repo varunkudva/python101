@@ -1,3 +1,23 @@
+"""
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PROBLEM:
+
+
+APPROACH/SOLUTION:
+
+
+NOTES:
+
+COMPEXITY:
+ Time: O(n)
+ Space: Constant if considering only alphabets.
+        O(k) where k is the character set count.
+
+SOURCE:
+None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"""
+
 # climb stairs problem from leetcode
 # Backtracking solution
 # You are climbing a stair case. It takes n steps to reach to the top.

@@ -1,3 +1,23 @@
+"""
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PROBLEM:
+
+
+APPROACH/SOLUTION:
+
+
+NOTES:
+
+COMPEXITY:
+ Time: O(n)
+ Space: Constant if considering only alphabets.
+        O(k) where k is the character set count.
+
+SOURCE:
+None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"""
+
 class Solution(object):
     def row_search(self, A, x):
         low = 0

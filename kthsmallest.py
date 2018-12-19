@@ -1,15 +1,37 @@
 """
-    ova_file = glob.glob(params.build_dir +'/vms/vmware-sensor*')
-kth smallest/largest element
-- use quickselect algorithm (part of quicksort)
-  to choose pivot element which is at index k-1
-- Can be used to find medians in unsorted arrays
-  by having k = len/2.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PROBLEM: Find kth smallest or kth largest element in a list
+
+
+APPROACH/SOLUTION:
+BF approach is to sort and return the element at index
+Complexity is O(nlogn)
+
+We dont have to sort all the elements to get kth smallest.
+Need to find the position of kth element in the sorted order.
+This can be done by partitioning the array such that partitioned
+element is the kth element.
+
+
+
+NOTES:
+
+COMPEXITY:
+ Time: O(n)
+ Space: Constant if considering only alphabets.
+        O(k) where k is the character set count.
+
+SOURCE:
+None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 """
+
+
 def swap(arr, i, j):
     temp = arr[i]
     arr[i] = arr[j]
     arr[j] = temp
+
 
 def partition(arr, left, right):
     """

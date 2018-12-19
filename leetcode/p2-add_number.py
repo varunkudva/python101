@@ -1,3 +1,23 @@
+"""
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PROBLEM:
+
+
+APPROACH/SOLUTION:
+
+
+NOTES:
+
+COMPEXITY:
+ Time: O(n)
+ Space: Constant if considering only alphabets.
+        O(k) where k is the character set count.
+
+SOURCE:
+None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"""
+
 class ListNode(object):
     def __init__(self, x):
         self.val = x
