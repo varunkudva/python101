@@ -8,18 +8,17 @@ BF approach is to sort and return the element at index k
 Complexity is O(nlogn)
 
 We dont have to sort all the elements to get kth smallest.
-Need to find the position of kth element in the sorted order.
-This can be done by partitioning the array such that partitioned
-element is the kth element.
+We just need to find the position of kth element in the sorted order.
+This can be done by partitioning the array and check if the partitioned
+element is the kth element
 
-
+for kth largest you just need to modify partitioning to reverse the
+order and return kth element
 
 NOTES:
 
 COMPEXITY:
  Time: O(n)
- Space: Constant if considering only alphabets.
-        O(k) where k is the character set count.
 
 SOURCE:
 None
