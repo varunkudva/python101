@@ -4,7 +4,7 @@ All subsets of a given set or Power set problem
 
 
 Approach/Solution:
-With a set with n items, there are 2**n subsets that can be formed.
+With a set with n items, there are 2 pow n subsets that can be formed.
 This is similar to the bits pattern where with n bits we can represent
 2**n numbers. Use bit representation to index elements of the subset
 to form all possible subsets.
@@ -13,7 +13,7 @@ to form all possible subsets.
 Notes:
 
 Compexity:
- Time: O(2**n)
+ Time: O(2**n) exponential
  Space:
 
 

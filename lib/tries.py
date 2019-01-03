@@ -65,6 +65,7 @@ if __name__ == '__main__':
     print "Enter number of operations:"
     n = int(raw_input().strip())
     for a0 in xrange(n):
+        print "Enter operation(add, find):"
         op, contact = raw_input().strip().split(' ')
         if op == 'add':
             my_trie.add_word(contact)

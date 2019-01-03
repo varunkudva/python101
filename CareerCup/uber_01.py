@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-# Convert a string with digits into a literal representation of the number like: 1001 to one thousand one
-
+# Convert a string with digits into a literal representation of the number like:
+1001 to one thousand one
 
 digit_map = {
     0: '', 1: 'one', 2: 'two', 3:'three',

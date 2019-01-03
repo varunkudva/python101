@@ -1,4 +1,4 @@
-#!/usr/bin/python -tt
+#!/usr/bin/python
 """
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 PROBLEM:
@@ -18,51 +18,12 @@ SOURCE:
 None
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 """
-
-"""
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-PROBLEM:
-
-
-APPROACH/SOLUTION:
-
-
-NOTES:
-
-COMPEXITY:
- Time: O(n)
- Space: Constant if considering only alphabets.
-        O(k) where k is the character set count.
-
-SOURCE:
-None
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-"""
-
-"""
-Problem:
-
-
-Approach/Solution:
-
-
-Notes:
-
-Compexity:
- Time: O(n)
- Space:
-
-
-Source:
-None
-"""
-
 
 import sys
 
 def example_list():
     L = []
-    for i in range(int(raw_input())): 
+    for i in range(int(raw_input())):
         command = raw_input().split()
         if command[0] == "insert":
             L.insert(int(command[1]), int(command[2]))
@@ -75,14 +36,14 @@ def example_list():
         elif command[0] == "sort":
             L.sort()
         elif command[0] == "pop":
-            L.pop()        
+            L.pop()
         elif command[0] == "reverse":
             L.reverse()
-            print L 
+            print L
         else:
             none
 
-           
+
 def example_tuple():
     x = tuple(int (i) for i in (raw_input().split()))
     print hash(x)
@@ -110,16 +71,16 @@ def solution(x):
    r = 0
    while q!= 0:
        r += q % 10
-       q = q / 10 
+       q = q / 10
 
    if r > 9:
        solution(r)
    else:
        print r
-  
+
 def answer2(population, x, y, strength):
 
-    res = list(population) 
+    res = list(population)
     stack = [(x,y)]
     visited = []
 
@@ -143,14 +104,14 @@ def answer2(population, x, y, strength):
 
 
 def answer(pop, x, y, strength):
-    
+
     if x < 0 or y < 0:
         return None
     if  x >= len(pop[0]) or y >= len(pop):
         return None
     if  pop[y][x] > strength or pop[y][x] == -1:
         return None
-    
+
     if strength >= pop[y][x]:
         pop[y][x] = -1
         answer(pop, x-1, y, strength)
@@ -160,12 +121,12 @@ def answer(pop, x, y, strength):
     else:
         return None
 
-    
+
 
 
 if  __name__ == '__main__':
    #example_list()
-   #example_tuple() 
+   #example_tuple()
    #example_set()
    #example_list_comprehension()
    #solution(int(raw_input()))
