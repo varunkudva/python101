@@ -1,13 +1,29 @@
 """
-Reverse characters in a string and subsequently reverse words in a sentence
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PROBLEM:
+Reverse a sentence in place.
+Eg: steal pound cake => cake pound steal
+
+
+APPROACH/SOLUTION:
+
+
+NOTES:
+
+COMPEXITY:
+ Time: O(n)
+ Space: Constant if considering only alphabets.
+        O(k) where k is the character set count.
+
+SOURCE:
+None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 """
 
 def str_rev(arr, s, e):
-    while s != e:
+    while s < e:
         # swap characters
-        tmp = arr[s]
-        arr[s] = arr[e]
-        arr[e] = tmp
+        arr[s], arr[e] = arr[e], arr[s]
         s += 1
         e -= 1
 
@@ -19,13 +35,14 @@ def word_rev(sentence):
     """
     st = list(sentence)
     str_rev(st, 0, len(st)-1)
-    start = 0
-    for idx in range(len(st)):
-        if st[idx] == " " or idx+1 == len(st):
-            end = idx-1
-            str_rev(st, start, end)
+    start, idx = 0, 0
+
+    for idx in xrange(len(st) + 1):
+        if idx == len(st) or st[idx] == ' ':
+            str_rev(st, start, idx-1)
             start = idx+1
 
     return ''.join(st)
 
 print word_rev("hello world")
+print word_rev("shuffle list in place")
