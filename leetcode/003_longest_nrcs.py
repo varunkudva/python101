@@ -48,8 +48,6 @@ def longest_nrcs(s):
     return maxlen, sub
 
 
-print longest_non_repeating('AODEBADOBACNC')
-print longest_non_repeating('AAAAAAA')
 print longest_nrcs('AODEBADOBACNC')
 print longest_nrcs('AAAAAAA')
 
