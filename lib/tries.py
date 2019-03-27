@@ -64,12 +64,14 @@ if __name__ == '__main__':
     my_trie = Trie()
     print "Enter number of operations:"
     n = int(raw_input().strip())
-    for a0 in xrange(n):
-        print "Enter operation(add, find):"
+    while True:
+        print "Enter operation(add, find, exit):"
         op, contact = raw_input().strip().split(' ')
         if op == 'add':
             my_trie.add_word(contact)
         if op == 'find':
             print my_trie.count_prefixes(contact)
+        if op == 'exit':
+            return
 
 
