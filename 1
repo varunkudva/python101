@@ -1,0 +1,43 @@
+#!/usr/bin/env python
+
+import threading
+
+class SharedObject(object):
+    def __init__(self):
+        self.odd_flag = True
+    def flip(self):
+        self.odd_flag = ~self.odd_flag
+
+
+class evenThread(threading.Thread):
+    def __init__(self, name, sh_obj):
+        super(evenThread, self).__init__(name=name)
+        self.seed = 2
+        self.sh_obj = sh_obj
+    def run(self):
+        print("{}: {}".format(self.getName(), self.seed))
+        while self.sh_obj.odd_flag == False:
+            print("{}: {}".format(self.getName(), self.seed))
+            self.seed += 2
+            self.sh_obj.flip()
+
+class oddThread(threading.Thread):
+    def __init__(self, name, sh_obj):
+        super(oddThread, self).__init__(name=name)
+        self.seed = 1
+        self.sh_obj = sh_obj
+    def run(self):
+        print("{}: {}".format(self.getName(), self.seed))
+        while self.sh_obj.odd_flag:
+            print("{}: {}".format(self.getName(), self.seed))
+            self.seed += 2
+            self.sh_obj.flip()
+
+
+
+if __name__ == '__main__':
+    sh_obj = SharedObject()
+    odd = oddThread('odd-thread', sh_obj)
+    even = evenThread('even-thread', sh_obj)
+    odd.start()
+    even.start()
