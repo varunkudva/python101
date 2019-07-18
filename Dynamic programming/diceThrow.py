@@ -24,7 +24,19 @@ Define recursive solution for subproblem
 
         w[i,j] = sum[w[i-1, j-k]], where k = (1, m)
 """
+def dice_throw_r(X, n, m):
+    """
+    recursive method
+    """
+    if X == 0 and n == 0:
+        return 1
+    if X <= 0 or n == 0:
+        return 0
+    sum = 0
+    for i in range(1, m+1):
+        sum += dice_throw_r(X-i, n-1, m)
 
+    return sum
 
 def dice_throw(X, n, m):
     """
@@ -47,4 +59,5 @@ def dice_throw(X, n, m):
     return w[n][X]
 
 
-print "No. of ways to generate sume 5 is:", dice_throw(5, 3, 4)
+print "Recursive No. of ways to generate sum 5 is:", dice_throw_r(X=5, n=3, m=4)
+print "DP No. of ways to generate sum 5 is:", dice_throw(X=5, n=3, m=4)

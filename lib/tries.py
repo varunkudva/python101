@@ -65,13 +65,14 @@ if __name__ == '__main__':
     print "Enter number of operations:"
     n = int(raw_input().strip())
     while True:
-        print "Enter operation(add, find, exit):"
-        op, contact = raw_input().strip().split(' ')
+        print "Enter operation(add, find, lcs,  exit):"
+        op, item = raw_input().strip().split(' ')
         if op == 'add':
-            my_trie.add_word(contact)
+            my_trie.add_word(item)
         if op == 'find':
-            print my_trie.count_prefixes(contact)
+            print my_trie.count_prefixes(item)
         if op == 'exit':
-            return
+            exit(0)
+
 
 

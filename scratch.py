@@ -39,6 +39,46 @@ def coin_change(n, m, coins):
     print c
     return c[m][n]
 
-n, m = (map(int, raw_input().strip().split(' ')))
-coins = map(int, raw_input().strip().split(' '))
-print coin_change(n, m, coins)
+# n, m = (map(int, raw_input().strip().split(' ')))
+# coins = map(int, raw_input().strip().split(' '))
+# print coin_change(n, m, coins)
+
+def licence_key_formatter(S, K):
+    s = S[::-1]
+    res = []
+    count = 0
+
+    for idx, char in enumerate(s):
+        if char == '-':
+            continue
+        if count != 0  and count % K == 0:
+            res.append('-')
+        res.append(char.upper())
+        count += 1
+    print ''.join(res[::-1])
+
+class Solution(object):
+    def licenseKeyFormatting(self, S, K):
+        """
+        :type S: str
+        :type K: int
+        :rtype: str
+        """
+        # convert lower to upper
+        # between groups of K characters
+        s = S[::-1]
+        res = []
+        count = 0
+
+        for idx, char in enumerate(s):
+            if char == '-':
+                continue
+            if count != 0  and count % K == 0:
+                res.append('-')
+            res.append(char.upper())
+            count += 1
+        return ''.join(res[::-1])
+
+s = '5F3Z-2e-9-w'
+s = '2-5g-3-J'
+licence_key_formatter(s, 4)

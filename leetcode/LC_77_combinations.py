@@ -32,19 +32,21 @@ class Solution(object):
         :type k: int
         :rtype: List[List[int]]
         """
-        def combine_bt(res, comb, i, k, nums):
-            if len(comb) == k:
+        def combine_bt(res, comb, idx, k, n):
+            if 0 == k:
                 res.append(comb[:])
             else:
-                while i < len(nums):
-                    comb.append(nums[i])
-                    combine_bt(res, comb, i+1, k, nums)
+                for i in range(idx, n):
+                    if k > n-i:
+                        break
+                    val = i+1
+                    comb.append(val)
+                    combine_bt(res, comb, i+1, k-1, n)
                     comb.pop()
-                    i += 1
             return res
 
-        nums = [i for i in range(1, n + 1)]
-        return combine_bt([], [], 0, k, nums)
+        #nums = [i for i in range(1, n + 1)]
+        return combine_bt([], [], 0, k, n)
 
 
 

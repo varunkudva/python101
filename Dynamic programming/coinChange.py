@@ -10,7 +10,7 @@ To count the total number of ways to make change for n with m denominations
 - Count no. of ways to make change n with m-1. Solutions that do not contain Sm
 - Count no. of ways to make change n-Sm with m. Solutions that contain atleast one Sm.
 
-    c[m, n] = c[m-1, n] + s[m, n-sm]
+    c[m, n] = c[m-1, n] + c[m, n-sm]
 
 DP relation:
     C[i, j] =   c[i-1, j] if D[i] > j
