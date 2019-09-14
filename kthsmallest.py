@@ -99,6 +99,6 @@ def kth_largest(arr, left, right, k):
 if __name__ == '__main__':
     arr = [4, 9, 2, 8, 6, 5, 3]
     for i in range(1, len(arr)+1):
-        print "{} smallest: {}".format(i, kth_smallest(arr, 0, len(arr)-1, i))
+        print("{} smallest: {}".format(i, kth_smallest(arr, 0, len(arr)-1, i)))
     for i in range(1, len(arr)+1):
-        print "{} largest: {}".format(i, kth_largest(arr, 0, len(arr)-1, i))
+        print("{} largest: {}".format(i, kth_largest(arr, 0, len(arr)-1, i)))

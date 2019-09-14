@@ -15,67 +15,43 @@ Compexity:
 Source:
 None
 """
-
-def permute(s, res=''):
-
-    if len(res) == len(s):
-        print res,
-
-    # candidate list
-    for char in s:
-         # is_valid_candidate
-        if char not in res:
-            #make_move, unmake_move
-            permute(s, res+char)
+from collections import Counter
 
 
+def permute_without_dup(s):
+    n = len(s)
+    res = [''] * n
 
-def unique_digit_num_count(n):
-    unique_digit = 9
-    available_num = 9
-    res = 10 # for n == 1
-    while n > 1:
-       unique_number = unique_number * available_num
-       res += unique_number
-       available_num -= 1
+    def permute(res, s, idx, n):
+        if idx == n:
+            print(''.join(res), end=' ')
+        for i, char in enumerate(s):
+            res[idx] = char
+            cand = s[:i] + s[i + 1:]
+            permute(res, cand, idx + 1, n)
 
-
-
-
-def combination_sum(res, idx, sum, input):
-    if sum == 0:
-        print res
-    else:
-        for i in range(idx, len(input)):
-            num = input[idx]
-            if num <= sum and num not in res:
-                res.append(num)
-                combination_sum(res, sum - num, input)
-                res.pop()
-
-# combination_sum([], 0, 7, [2,3,6,7].sort())
-# combination_sum([], 0, 8, [10, 1, 2, 7, 6, 1, 5].sort())
-
-def pattern_match(str, pattern, j=0, n=0):
-    if j == len(pattern):
-        if j == n:
-            return True
-        return False
-    for i in range(0, len(str)):
-        if pattern[j] == '*' and j < len(pattern)-1 and str[i] != pattern[j+1]:
-            return pattern_match(str[i+1:], pattern, j, n)
-        elif str[i] == pattern[j] or pattern[j] == '?':
-            return pattern_match(str[i+1:], pattern, j+1, n)
-    return False
-
-def test_pattern_match():
-    print pattern_match('aa', 'a', n=len('aa'))
-    print pattern_match('aa', 'aa', n=len('aa'))
-    print pattern_match('aaa', 'aa', n=len('aaa'))
-    print pattern_match('aa', '*', n=len('aa'))
+    permute(res, s, 0, n)
 
 
-if __name__ == '__main__':
-    permute('abc')
-    permute('')
-    permute('ab')
+def permute_with_dup(s):
+    n = len(s)
+    res = [''] * n
+    char_map = Counter(s)
+
+    # print char_counts
+
+    def permute(res, idx, n):
+        if idx == n:
+            print(''.join(res), end=' ')
+        for char, count in list(char_map.items()):
+            if count > 0:
+                char_map[char] = count - 1
+                res[idx] = char
+                permute(res, idx + 1, n)
+                char_map[char] = count
+
+    permute(res, 0, n)
+
+
+permute_without_dup('abc')
+permute_with_dup('aabc')

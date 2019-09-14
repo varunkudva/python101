@@ -7,6 +7,8 @@ Eg: steal pound cake => cake pound steal
 
 APPROACH/SOLUTION:
 
+Optimum solution is to reverse the string and then reverse
+each individual words
 
 NOTES:
 
@@ -37,12 +39,12 @@ def word_rev(sentence):
     str_rev(st, 0, len(st)-1)
     start, idx = 0, 0
 
-    for idx in xrange(len(st) + 1):
+    for idx in range(len(st) + 1):
         if idx == len(st) or st[idx] == ' ':
             str_rev(st, start, idx-1)
             start = idx+1
 
     return ''.join(st)
 
-print word_rev("hello world")
-print word_rev("shuffle list in place")
+print(word_rev("hello world"))
+print(word_rev("shuffle list in place"))

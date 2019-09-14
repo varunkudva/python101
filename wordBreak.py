@@ -1,9 +1,27 @@
 """
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PROBLEM:
 This is a famous google interview problem
 Given an input string and a dictionary of words, find out if the input
 string can be segmented into a space-separated sequence of dictionary words.
 See following examples for more details.
 
+
+APPROACH/SOLUTION:
+
+Optimum solution is to reverse the string and then reverse
+each individual words
+
+NOTES:
+
+COMPEXITY:
+ Time: O(n)
+ Space: Constant if considering only alphabets.
+        O(k) where k is the character set count.
+
+SOURCE:
+None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 """
 d = [ 'apple', 'pie', 'gold', 'rush', 'sand', 'dune']
 
@@ -33,4 +51,4 @@ def word_break_iter(input, d):
     return res
 
 #print word_break_recur('applesanddune', d)
-print word_break_iter('applesanddune', d)
+print(word_break_iter('applesanddune', d))
