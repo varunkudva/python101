@@ -9,7 +9,7 @@ def string_to_int(string):
     res = 0
     for c in string:
         digit = ord(c) - ord('0')
-        print digit
+        print(digit)
         res = res * 10 + digit
 
     return -res if string[0] == '-' else res
@@ -34,4 +34,4 @@ def integer_to_string(num):
 
 
 if __name__ == '__main__':
-    print string_to_int('-200')
+    print(string_to_int('-200'))

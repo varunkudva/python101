@@ -87,14 +87,14 @@ if __name__ == '__main__':
     # solution 1
     colors = [2,0,2,1,1,0]
     Solution().sortColors(colors)
-    print "sortcolors: ",colors
+    print("sortcolors: ",colors)
 
     # solution 2
     colors = [2,0,2,1,1,0]
     Solution().sort_colors_2(colors)
-    print "sort_colors_2: ", colors
+    print("sort_colors_2: ", colors)
 
     # solution 3
     colors = [2,0,2,1,1,0]
     Solution().sort_colors_one_pass(colors)
-    print "sort_colors_one_pass: ", colors
+    print("sort_colors_one_pass: ", colors)

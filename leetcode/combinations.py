@@ -39,6 +39,6 @@ class Solution(object):
         return output
 
 if __name__ == '__main__':
-    k = int(raw_input())
-    n = int(raw_input())
-    print Solution().combine(n, k)
+    k = int(input())
+    n = int(input())
+    print(Solution().combine(n, k))

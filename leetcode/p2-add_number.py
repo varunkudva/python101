@@ -32,11 +32,11 @@ class Solution(object):
         """
         lnew = ListNode(0)
         carry_over = 0
-        if l1.next != None and l2.next != None:
-            lnew.next, carry_over = self.addTwoNumbers(l1.next, l2.next)
-        elif l1.next == None:
-            if l2.next:
-                lnew.next, carry_over = self.addTwoNumbers(l1, l2.next)
+        if l1.__next__ != None and l2.__next__ != None:
+            lnew.next, carry_over = self.addTwoNumbers(l1.__next__, l2.__next__)
+        elif l1.__next__ == None:
+            if l2.__next__:
+                lnew.next, carry_over = self.addTwoNumbers(l1, l2.__next__)
 
         val = l1.val + l2.val + carry_over
         if val >= 10:
@@ -64,7 +64,7 @@ def read_number(num_str):
 
 
 if __name__ == '__main__':
-   a, b = raw_input().split('+')
+   a, b = input().split('+')
    l1 = read_number(a)
    l2 = read_number(b)
    lnew, carryover = Solution().addTwoNumbers(l1, l2)
@@ -76,9 +76,9 @@ if __name__ == '__main__':
    sumlist = list()
    while lnew:
        sumlist.append(str(lnew.val))
-       lnew = lnew.next
+       lnew = lnew.__next__
 
-   print "->".join(sumlist)
+   print("->".join(sumlist))
 
 
 

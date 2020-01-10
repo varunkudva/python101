@@ -51,5 +51,5 @@ class Solution(object):
 
 
 
-print (Solution().combine(4, 3))
-print (Solution().combine(4, 2))
+print((Solution().combine(4, 3)))
+print((Solution().combine(4, 2)))

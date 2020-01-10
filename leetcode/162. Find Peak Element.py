@@ -71,5 +71,5 @@ class Solution(object):
                 low=mid+1
 
 nums = [1,2]
-print Solution().findPeakElement(nums)
-print Solution().findPeakElement_2(nums)
+print(Solution().findPeakElement(nums))
+print(Solution().findPeakElement_2(nums))

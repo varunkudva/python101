@@ -24,9 +24,11 @@ Compexity:
 Source:
 https://www.interviewcake.com/question/python/stock-price
 """
+import unittest
+
 def get_max_profit(stock_prices):
     if len(stock_prices) < 2:
-        print "Invalid stock price list"
+        print("Invalid stock price list")
         return
 
     min_price = stock_prices[0]
@@ -47,13 +49,16 @@ def get_max_profit(stock_prices):
 
     return max_profit
 
+class TestMaxProfit(unittest.TestCase):
+    def test_equals(self):
+        test_input = [[10, 7, 5, 8, 11, 9],
+                      [10, 9, 8, 7, 6, 5],
+                      [4, 11, 23, 5, 6, 90, 11, 24, 55]]
+
+        expected_output = [6, -1, 86]
+
+        for input, expected in zip(test_input, expected_output):
+            self.assertEqual(get_max_profit(input), expected)
 
 if __name__ == '__main__':
-    test_input = [[10, 7, 5, 8, 11, 9],
-                  [10, 9, 8, 7, 6, 5],
-                  [4, 11, 23, 5, 6, 90, 11, 24, 55]]
-
-    expected_output = [6, -1, 86]
-
-    for input, expected in zip(test_input, expected_output):
-        assert get_max_profit(input) == expected
+    unittest.main()

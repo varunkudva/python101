@@ -29,6 +29,8 @@ Compexity:
 Source:
 https://leetcode.com/problems/longest-substring-without-repeating-characters/
 """
+
+
 def longest_nrcs(s):
     i, j = 0, 0 # marks the sliding window
     n = len(s)
@@ -48,7 +50,5 @@ def longest_nrcs(s):
     return maxlen, sub
 
 
-print longest_nrcs('AODEBADOBACNC')
-print longest_nrcs('AAAAAAA')
-
-
+print(longest_nrcs('AODEBADOBACNC'))
+print(longest_nrcs('AAAAAAA'))

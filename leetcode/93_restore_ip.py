@@ -20,7 +20,7 @@ class Solution(object):
             if substr is valid_octet, append to result
 
             '''
-            print (ipstr, octet)
+            print((ipstr, octet))
             if not s:
                 if octet:
                     ipstr = '.'.join([ipstr, octet])
@@ -54,4 +54,4 @@ class Solution(object):
 25.52.25.1
 25.5.22.51
 '''
-print (Solution().restoreIpAddresses("2552551"))
+print((Solution().restoreIpAddresses("2552551")))

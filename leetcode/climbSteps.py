@@ -30,7 +30,7 @@ def climb(top, ways, path):
 
     if top == 0:
         ways += 1
-        print path
+        print(path)
 
     if top < 0: return
 
@@ -42,5 +42,5 @@ def climb(top, ways, path):
     return ways
 
 path = list()
-print "ways:{}".format(climb(4, 0, path))
+print("ways:{}".format(climb(4, 0, path)))
 

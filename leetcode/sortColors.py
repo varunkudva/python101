@@ -27,7 +27,7 @@ def sort_colors(arr):
 
 arr = [2, 1, 2, 0, 1, 1, 0]
 sort_colors(arr)
-print arr
+print(arr)
 
 
 
