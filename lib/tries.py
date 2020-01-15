@@ -62,15 +62,15 @@ class Trie():
 
 if __name__ == '__main__':
     my_trie = Trie()
-    print "Enter number of operations:"
-    n = int(raw_input().strip())
+    print("Enter number of operations:")
+    n = int(input().strip())
     while True:
-        print "Enter operation(add, find, lcs,  exit):"
-        op, item = raw_input().strip().split(' ')
+        print("Enter operation(add, find, lcs,  exit):")
+        op, item = input().strip().split(' ')
         if op == 'add':
             my_trie.add_word(item)
         if op == 'find':
-            print my_trie.count_prefixes(item)
+            print(my_trie.count_prefixes(item))
         if op == 'exit':
             exit(0)
 

@@ -33,4 +33,4 @@ def qsort(arr, left, right):
 if __name__ == '__main__':
     arr = [4, 9, 6, 8, 5, 2, 3]
     qsort(arr, 0, len(arr)-1)
-    print arr
+    print(arr)

@@ -42,8 +42,8 @@ def sort(arr, low, high):
 
 if __name__ == '__main__':
     arr = [4, 2, 5, 6, 3, 1]
-    print sort(arr, 0, len(arr)-1)
+    print(sort(arr, 0, len(arr)-1))
 
     arr = [1, 2, 3, 4, 5, 6]
-    print sort(arr, 0, len(arr)-1)
+    print(sort(arr, 0, len(arr)-1))
 

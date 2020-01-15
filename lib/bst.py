@@ -2,7 +2,7 @@
 Binary Search Tree implementation
 """
 
-from binarytree import BinaryTree, Node
+from lib.binarytree import BinaryTree, Node
 
 
 class Bst(BinaryTree):

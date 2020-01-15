@@ -24,7 +24,7 @@ class Sll(object):
         if self.head is None:
             self.head = new
         else:
-            new.next = self.head.next
+            new.next = self.head.__next__
             self.head = new
 
     def pop(self):
@@ -33,7 +33,7 @@ class Sll(object):
             return None
 
         val = self.head.data
-        if self.head.next is None:
+        if self.head.__next__ is None:
             # last node
             self.head = None
 
@@ -41,8 +41,8 @@ class Sll(object):
 
     def append(self, val):
         node = self.head
-        while node.next is not None:
-            node = node.next
+        while node.__next__ is not None:
+            node = node.__next__
 
         node.next = Node(val)
 
@@ -55,13 +55,13 @@ class Sll(object):
         while curr is not None:
             if curr.data == val:
                 if curr == self.head:
-                    self.head = curr.next
+                    self.head = curr.__next__
                 else:
-                    prev.next = curr.next
+                    prev.next = curr.__next__
                 return True
 
             prev = curr
-            curr = curr.next
+            curr = curr.__next__
 
         return False
 
@@ -82,7 +82,7 @@ class Dll(object):
         else:
             new.prev = self.tail
             self.tail.next = new
-            self.tail = self.tail.next
+            self.tail = self.tail.__next__
 
     def dequeue(self, val):
         """
@@ -92,7 +92,7 @@ class Dll(object):
         """
         if self.head:
             node = self.head
-            self.head = self.head.next
+            self.head = self.head.__next__
             return node
 
         return None

@@ -11,7 +11,7 @@ class Node(object):
         self.data = data
 
     def __repr__(self):
-        print "d:{} l:{} r:{}".format(self.data, self.left, self.right)
+        print("d:{} l:{} r:{}".format(self.data, self.left, self.right))
 
 
 class BinaryTree(object):
@@ -27,7 +27,7 @@ class BinaryTree(object):
     def insert(self, val):
         ''' Insert Node into Binary Tree '''
 
-        if self.root is None:
+        if node is None:
             new = Node(val)
             self.root = new
         else:
@@ -65,12 +65,12 @@ class BinaryTree(object):
     def print_inorder(self, node=None):
         if node is not None:
             self.print_inorder(node.left)
-            print node.data,
+            print(node.data, end=' ')
             self.print_inorder(node.right)
 
     def print_preorder(self, node=None):
         if node is not None:
-            print node.data,
+            print(node.data, end=' ')
             self.print_preorder(node.left)
             self.print_preorder(node.right)
 
@@ -89,11 +89,11 @@ class BinaryTree(object):
         while queue:
             node = queue.pop(0)
             if node.data == -1:
-                print
+                print()
                 if queue:
                     queue.append(sentinal)
             else:
-                print node.data,
+                print(node.data, end=' ')
                 if node.left: queue.append(node.left)
                 if node.right: queue.append(node.right)
 

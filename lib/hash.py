@@ -55,6 +55,6 @@ if __name__ == '__main__':
     h['c'] = 50
 
     del h['b']
-    for key in h.keys():
-        print key, h[key]
+    for key in list(h.keys()):
+        print(key, h[key])
 

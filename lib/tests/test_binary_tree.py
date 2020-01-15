@@ -16,7 +16,7 @@ class TestBinaryTree(unittest.TestCase):
         # self.assertEquals(lines[2], [11, 9, 13])
     def test_path(self):
         res = self.tree.path_search(9)
-        self.assertEquals(res, [4, 8, 9])
+        self.assertEqual(res, [4, 8, 9])
     def test_delete(self):
         pass
     def test_traversal(self):

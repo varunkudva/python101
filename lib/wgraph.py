@@ -84,7 +84,7 @@ class Wgraph():
 
         while queue:
             u = queue.pop(0)
-            print u
+            print(u)
             for v in self.adj[u]:
                 if visited[v] is False:
                     # mark and append to queue
@@ -96,10 +96,10 @@ class Wgraph():
         for v in range(self.vertices):
             self.visited = [False] * self.vertices
             self.count = 0 # initialize connected vertex count
-            print "DFS from {}:".format(v),
+            print("DFS from {}:".format(v), end=' ')
             self.dfs(v)
-            print
-            print "Vertices connected {}".format(v, self.count)
+            print()
+            print("Vertices connected {}".format(v, self.count))
 
     def dfs(self, u):
         """ DFS from source vertex u. Count keeps track of number
@@ -107,7 +107,7 @@ class Wgraph():
         """
         self.count += 1
         self.visited[u] = True
-        print u,
+        print(u, end=' ')
         for v in self.adj[u]:
             if not self.visited[v]:
                 self.dfs(v)
@@ -179,10 +179,10 @@ class Wgraph():
                 self.dfs_cycle(u)
 
             if self.cycle:
-                print "Cycle: {}".format(",".join(map(str,self.cycle)))
+                print("Cycle: {}".format(",".join(map(str,self.cycle))))
                 return True
 
-        print "No cycle found!!"
+        print("No cycle found!!")
 
 
 if __name__ == '__main__':
