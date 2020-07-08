@@ -61,6 +61,6 @@ def main():
    sol = [[0] * 5 for i in range(5)]
    if search_matrix(matrix, sol, word, 5):
        for row in range(len(sol)):
-           print sol[row]
+           print(sol[row])
 
 main()

@@ -2,8 +2,6 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 PROBLEM: Find kth smallest or kth largest element in a list
 
-
-APPROACH/SOLUTION:
 BF approach is to sort and return the element at index k
 Complexity is O(nlogn)
 
@@ -70,7 +68,7 @@ def quick_select(arr, left, right, k):
 
 def kth_smallest(arr, left, right, k):
     """
-    This uses the quickselect algorithm to find
+    This uses the itemct algorithm to find
     smallest
     """
     while left <= right:
@@ -84,7 +82,7 @@ def kth_smallest(arr, left, right, k):
 
 def kth_largest(arr, left, right, k):
     """
-    This uses the quickselect algorithm to find
+    This uses the itemct algorithm to find
     smallest
     """
     while left <= right:

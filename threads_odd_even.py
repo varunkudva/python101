@@ -3,8 +3,8 @@
 Print odd even numbers using 2 threads with wait-notify
 
 """
-import sys
 import threading
+
 
 class SharedObject(object):
     def __init__(self):

@@ -17,11 +17,9 @@ None
 """
 from lib.linklist import Dll
 
-
 class LRUCache(object):
     def __init__(self, capacity):
         """
-
         :type capacity: int
         """
         self.hash = dict()

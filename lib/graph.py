@@ -6,8 +6,10 @@ __author__ = "vkudva"
 
 from collections import defaultdict
 
-CYCLES_DG = "../tests/cycles.txt"
+CYCLES_DG = "../tests/cycles.txt"  # directed
 TOPO_DAG = "../tests/topo.txt"
+CYCLES_G = "../tests/cycles_ug.txt"  # undirected
+
 
 class Graph():
     '''
@@ -17,6 +19,7 @@ class Graph():
     node as a key in dict and a list of edges
     as values
     '''
+
     def __init__(self, v):
         self.adj = defaultdict(list)
         self.vertices = v
@@ -37,7 +40,7 @@ class Graph():
         # u and v are nodes
         self.num_edges += 1
         self.adj[u].append(v)
-        #self.adj[v].append(u)
+        # self.adj[v].append(u)
 
     def remove_edge(self, u, v):
         self.num_edges -= 1
@@ -70,7 +73,7 @@ class Graph():
         """ DFS from all source to all vertices """
         for v in range(self.vertices):
             self.visited = [False] * self.vertices
-            self.count = 0 # initialize connected vertex count
+            self.count = 0  # initialize connected vertex count
             print("DFS from {}:".format(v), end=' ')
             self.dfs(v)
             print()
@@ -88,6 +91,14 @@ class Graph():
                 self.dfs(v)
 
     def topo_sort_dfs(self, u, tlist):
+        """
+        Topological sort is basically dfs on the graph and ordering nodes
+        based on finish times. Keep adding nodes to a stack in the order
+        they finish.
+        :param u: start node
+        :param tlist: stack of nodes. Top finished last
+        :return: tlist
+        """
         self.visited[u] = True
         for v in self.adj[u]:
             if not self.visited[v]:
@@ -138,6 +149,8 @@ class Graph():
 
     def directed_cycle(self):
         """
+        Directed cycle checks if there is a back edge from a node to any
+        node in the recursive stack.
         on_stack: keeps track of all the nodes visited on a given recursive
         call from source vertex.
         path_to: keeps track of previous vertex connecting to this vertex and
@@ -154,7 +167,7 @@ class Graph():
                 self.dfs_cycle(u)
 
             if self.cycle:
-                print("Cycle: {}".format(",".join(map(str,self.cycle))))
+                print("Cycle: {}".format(",".join(map(str, self.cycle))))
                 return True
 
         print("No cycle found!!")

@@ -32,23 +32,47 @@ https://leetcode.com/problems/longest-substring-without-repeating-characters/
 
 
 def longest_nrcs(s):
-    i, j = 0, 0 # marks the sliding window
+    left, right = 0, 0  # marks the sliding window
     n = len(s)
     seen = dict()
     sub = None
     maxlen = 0
-    while i < n and j < n:
-        curr_char = s[j]
-        if curr_char not in seen or seen[curr_char] < i:
-            seen[curr_char] = j
-            j += 1
+    while right < n:
+        char = s[right]
+        if char not in seen or seen[char] < left:
+            seen[char] = right
+            right += 1
         else:
-            if j-i > maxlen:
-                maxlen = max(maxlen, j-i)
-                sub = s[i:j]
-            i = seen[curr_char]+1
+            maxlen = max(maxlen, right - left)
+            sub = s[left:right]
+            left = seen[char] + 1
     return maxlen, sub
+
+
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        left, right = 0, 0  # marks the sliding window
+        maxlen = 0
+        seen = [-1] * 256
+        while right < len(s):
+            char = s[right]
+            cidx = ord(char)
+            # print cidx
+            if seen[cidx] < left:
+                seen[cidx] = right
+                right += 1
+            else:
+                maxlen = max(maxlen, right - left)
+                left = seen[cidx] + 1
+
+        maxlen = max(maxlen, right - left)
+        return maxlen
 
 
 print(longest_nrcs('AODEBADOBACNC'))
 print(longest_nrcs('AAAAAAA'))
+print(longest_nrcs('abc'))

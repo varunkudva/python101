@@ -27,7 +27,7 @@ class BinaryTree(object):
     def insert(self, val):
         ''' Insert Node into Binary Tree '''
 
-        if node is None:
+        if self.root is None:
             new = Node(val)
             self.root = new
         else:

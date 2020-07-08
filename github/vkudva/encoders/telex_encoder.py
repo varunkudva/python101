@@ -3,8 +3,9 @@
 Class to
 '''
 
-from encoder_factory import BaseSerDes
 from collections import Counter
+
+from github.vkudva.encoders.encoder_factory import BaseSerDes
 
 ENCODE_MAP = {
     '.': 'DOT',
@@ -13,15 +14,22 @@ ENCODE_MAP = {
     '!': 'EXCLAMATION MARK'
 }
 
-class TelexSerdes(object):
+
+class TelexSerdes(BaseSerDes):
+    """
+
+    """
+
     def __init__(self):
-        pass
+        super().__init__("telex")
+
     def encode(self, input):
         """
         example: "test., this code?"
         :param input: string
         :return:
         """
+        # count space required for additional characters
         char_counter = Counter(input)
         write_idx = len(input)
         for char, count in char_counter.items():
@@ -44,5 +52,4 @@ class TelexSerdes(object):
 
 
 if __name__ == '__main__':
-    print TelexSerdes().encode("test., this code?")
-
+    print(TelexSerdes().encode("test., this code?"))

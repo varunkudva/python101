@@ -1,5 +1,7 @@
 """
 Problem:
+All permutations of a given
+
 
 
 Approach/Solution:
@@ -17,7 +19,9 @@ None
 """
 from collections import Counter
 
-
+"""
+Backtracking WAY
+"""
 def permute_without_dup(s):
     n = len(s)
     res = [''] * n
@@ -53,5 +57,32 @@ def permute_with_dup(s):
     permute(res, 0, n)
 
 
-permute_without_dup('abc')
-permute_with_dup('aabc')
+"""
+BFS WAY
+"""
+
+
+def permute_without_dup_bfs(s):
+    res = []
+    return res
+
+
+def permumute_with_dup_bfs(s):
+    res = []
+    return res
+
+
+"""
+SWAP WAY
+"""
+
+
+def test_driver():
+    print("Permute without duplicates: Input: abc")
+    permute_without_dup('abc')
+    print("Permute with duplicates: Input: aabc")
+    permute_with_dup('aabc')
+
+
+if __name__ == '__main__':
+    test_driver()

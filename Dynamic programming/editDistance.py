@@ -26,21 +26,23 @@ def edit_distance(word1, word2):
     for j in range(n+1):
         d[0][j] = j
 
-    for i in range(1, m+1):
-        for j in range(1, n+1):
-            if word1[i-1] == word2[j-1]:
-                d[i][j] = d[i-1][j-1]
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if word1[i - 1] == word2[j - 1]:
+                d[i][j] = d[i - 1][j - 1]
             else:
-                insert = d[i][j-1] + 1
-                delete = d[i-1][j] + 1
-                replace = d[i-1][j-1] + 1
+                insert = d[i][j - 1] + 1
+                delete = d[i - 1][j] + 1
+                replace = d[i - 1][j - 1] + 1
                 d[i][j] = min(insert, delete, replace)
 
-    for i in range(m+1):
-        print d[i]
+    for i in range(m + 1):
+        print(d[i])
 
     return d[m][n]
 
-word1 = raw_input()
-word2 = raw_input()
-print edit_distance(word1, word2)
+
+word1 = input()
+word2 = input()
+
+print(edit_distance(word1, word2))
