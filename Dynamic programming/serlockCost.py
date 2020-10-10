@@ -35,12 +35,12 @@ def max_cost(b, n):
                 a[i] = 1
         c[i] = c[i-1] + abs(a[i] - a[i-1])
 
-    print a
+    print(a)
     return c[n-1]
 
 #b = [5,8,10,9,6]
-T = int(raw_input())
+T = int(input())
 for i in range(T):
-    n = int(raw_input())
-    b = map(int, raw_input().strip().split())
-    print max_cost(b, n)
+    n = int(input())
+    b = list(map(int, input().strip().split()))
+    print(max_cost(b, n))

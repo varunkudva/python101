@@ -11,7 +11,7 @@ def lcs_simple(x, y):
             return
         if c[i][j] == c[i-1][j-1]+1:
             print_lcs(x, y, i-1, j-1, c)
-            print x[i-1],
+            print(x[i-1], end=' ')
         elif c[i][j] == c[i-1][j]:
             print_lcs(x, y, i-1, j, c)
         else:
@@ -45,5 +45,5 @@ def lcs_simple(x, y):
 
 
 if __name__ == '__main__':
-    print "Length: {}".format(lcs_simple("abcbdab","bdcaba"))
+    print("Length: {}".format(lcs_simple("abcbdab","bdcaba")))
 

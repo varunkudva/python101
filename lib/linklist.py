@@ -1,6 +1,7 @@
 """
 Single linked list Double linked list Circular linked list
 """
+import unittest
 
 
 class Node(object):
@@ -19,8 +20,6 @@ class Sll(object):
 
     def push(self, val):
         """ Insert at head of list """
-
-        new = Node(val)
         if self.head is None:
             self.head = new
         else:
@@ -78,13 +77,13 @@ class Dll(object):
         """
         new = Node(val)
         if self.head is None:
-            self.tail = self.head = val
+            self.tail = self.head = new
         else:
             new.prev = self.tail
             self.tail.next = new
-            self.tail = self.tail.__next__
+            self.tail = self.tail.next
 
-    def dequeue(self, val):
+    def dequeue(self):
         """
         Dequeue
         :param val:
@@ -92,10 +91,32 @@ class Dll(object):
         """
         if self.head:
             node = self.head
-            self.head = self.head.__next__
+            self.head = self.head.next
             return node
 
         return None
+
+    def delete(self, val):
+        cur: Node = self.head
+        while cur is not None:
+            if cur.data == val:
+                if self.head == self.tail == cur:
+                    # one node
+                    self.head = self.tail = None
+                elif cur == self.head:
+                    self.head = self.head.next
+                elif cur == self.tail:
+                    self.tail = self.tail.prev
+                else:
+                    cur.prev.next = cur.next
+                    cur.next.prev = cur.prev
+                return
+            else:
+                cur = cur.next
+
+        raise KeyError("{} not found".format(val))
+
+
 
     def push(self, val):
         """
@@ -111,3 +132,6 @@ class Cll(object):
     def __init__(self):
         pass
 
+class
+
+if __name__ == '__main__':

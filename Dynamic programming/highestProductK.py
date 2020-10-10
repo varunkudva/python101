@@ -12,9 +12,9 @@ def highest_product(arr, k, n):
             if j >= i-1:
                 prod[i][j] = max(prod[i][j-1], prod[i-1][j-1] * arr[j])
 
-    print prod
+    print(prod)
     return prod[k][n-1]
 
 arr = [4, 9, 2, 3, 6, 8, 1, 5]
-print highest_product(arr, 3, len(arr))
+print(highest_product(arr, 3, len(arr)))
 

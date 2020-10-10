@@ -35,7 +35,7 @@ def maximal_submatrix(M):
                 S[i][j] = min(S[i-1][j], S[i][j-1], S[i-1][j-1]) + 1
                 if S[i][j] > max:
                     max = S[i][j]
-    print S
+    print(S)
     return max
 
 if __name__ == '__main__':
@@ -44,4 +44,4 @@ if __name__ == '__main__':
          [1, 1, 1, 1, 1],
          [1, 0, 0, 1, 0]]
 
-    print maximal_submatrix(M)
+    print(maximal_submatrix(M))

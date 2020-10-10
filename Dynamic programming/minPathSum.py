@@ -70,14 +70,14 @@ class Solution(object):
                 return
             if i > 0 and cost[i][j] == cost[i-1][j] + grid[i][j]:
                 print_min_cost_path(cost, i-1, j)
-                print "D",
+                print("D", end=' ')
             elif j > 0 and cost[i][j] == cost[i][j-1] + grid[i][j]:
                 print_min_cost_path(cost, i, j-1)
-                print "R",
+                print("R", end=' ')
             elif i > 0 and j > 0 and cost[i][j] == cost[i-1][j-1] + grid[i][j]:
                 print_min_cost_path(cost, i-1, j-1)
-                print "C",
-            print grid[i][j],
+                print("C", end=' ')
+            print(grid[i][j], end=' ')
 
         m = len(grid)
         n = len(grid[0])
@@ -96,7 +96,7 @@ class Solution(object):
 
         #print cost
         print_min_cost_path(cost, m-1, n-1)
-        print
+        print()
         return cost[m-1][n-1]
 
 
@@ -106,6 +106,6 @@ if __name__ == '__main__':
             [4,8,2],
             [1,5,3]]
 
-    print "Recursive -> Min Cost: {}".format(Solution().min_cost_path_recursion(grid))
-    print "Memoization -> Min Cost: {}".format(Solution().min_cost_path_memoized(grid))
-    print "DP -> Min Cost: {}".format(Solution().min_cost_path_dynamic(grid))
+    print("Recursive -> Min Cost: {}".format(Solution().min_cost_path_recursion(grid)))
+    print("Memoization -> Min Cost: {}".format(Solution().min_cost_path_memoized(grid)))
+    print("DP -> Min Cost: {}".format(Solution().min_cost_path_dynamic(grid)))

@@ -20,7 +20,7 @@ This can be build bottom up in DP fashion by defining S[i][j]
 """
 def print_set(arr, res, s, i, j, n, sum):
     if sum == 0:
-        print res
+        print(res)
         return
     if i < 0 or j < 0:
         return
@@ -59,4 +59,4 @@ def subset_sum_dp(arr, m, n):
 if __name__ == '__main__':
     A = [3, 34, 4, 12, 5, 2]
     sum = 9
-    print "subset exists:", subset_sum_dp(A, sum, len(A))
+    print("subset exists:", subset_sum_dp(A, sum, len(A)))

@@ -49,7 +49,6 @@ def coin_change_dp(n, m, coins):
                 c[i][j] = c[i - 1][j] + 1
             else:
                 c[i][j] = c[i - 1][j]
-    print c
     return c[m][n]
 
 
@@ -58,5 +57,5 @@ if __name__ == '__main__':
     # coins = map(int, raw_input().strip().split(' '))
     n = 4
     coins = [1, 2, 3]
-    print "Recursive no. of ways: {}".format(coin_change_r(n, len(coins), coins))
-    print "DP no. of ways: {}".format(coin_change_dp(n, len(coins), coins))
+    print("Recursive no. of ways: {}".format(coin_change_r(n, len(coins), coins)))
+    print("DP no. of ways: {}".format(coin_change_dp(n, len(coins), coins)))

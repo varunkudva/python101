@@ -34,6 +34,8 @@ def generate_subsets(s):
 
    return (res)
 
+def generate_subsets_backtrack(s):
+
 
 def generate_subsets_bfs(s):
    """

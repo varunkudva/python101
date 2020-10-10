@@ -37,12 +37,12 @@ def edit_distance(word1, word2):
                 d[i][j] = min(insert, delete, replace)
 
     for i in range(m + 1):
-        print(d[i])
+        print((d[i]))
 
     return d[m][n]
 
 
-word1 = input()
-word2 = input()
+word1 = eval(input())
+word2 = eval(input())
 
-print(edit_distance(word1, word2))
+print((edit_distance(word1, word2)))

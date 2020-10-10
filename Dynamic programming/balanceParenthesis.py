@@ -13,7 +13,7 @@ def add_parenthesis(n, left, right, idx, res):
         return
 
     if left == n and right == n:
-        print "".join(res)
+        print("".join(res))
     else:
         res[idx] = '('
         add_parenthesis(n, left+1, right, idx+1, res)

@@ -59,5 +59,5 @@ def dice_throw(X, n, m):
     return w[n][X]
 
 
-print "Recursive No. of ways to generate sum 5 is:", dice_throw_r(X=5, n=3, m=4)
-print "DP No. of ways to generate sum 5 is:", dice_throw(X=5, n=3, m=4)
+print("Recursive No. of ways to generate sum 5 is:", dice_throw_r(X=5, n=3, m=4))
+print("DP No. of ways to generate sum 5 is:", dice_throw(X=5, n=3, m=4))

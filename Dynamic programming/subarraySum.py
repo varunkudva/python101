@@ -41,12 +41,12 @@ def subarraySum(arr, target_sum):
     for i in range(len(arr)):
         curr_sum += arr[i]
         if curr_sum == target_sum:
-            print arr[0:i+1]
+            print(arr[0:i+1])
         else:
             off_sum = curr_sum - target_sum
             # off_sum+1 to i adds up to target_sum
             if off_sum in smap:
-                print arr[smap[off_sum]+1:i+1]
+                print(arr[smap[off_sum]+1:i+1])
             smap[curr_sum] = i
 
 alist = [

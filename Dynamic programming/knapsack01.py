@@ -28,7 +28,7 @@ def knapsack(w, v, weight):
             print_items(i - 1, j)
         else:
             print_items(i - 1, j - w[i - 1])
-            print i - 1,
+            print(i - 1, end=' ')
 
     items = len(v)
     val = [[0] * (weight + 1) for _ in range(items + 1)]
@@ -41,13 +41,13 @@ def knapsack(w, v, weight):
                 val[i][j] = max(val[i - 1][j], val[i - 1][j - w[i - 1]] + v[i - 1])
 
     for i in range(items + 1):
-        print val[i]
+        print(val[i])
 
-    print "Items picked: ", print_items(items, weight)
+    print("Items picked: ", print_items(items, weight))
     return val[items][weight]
 
 
 if __name__ == '__main__':
     v = [10, 40, 30, 50]
     w = [5, 4, 6, 3]
-    print knapsack(w, v, 10)
+    print(knapsack(w, v, 10))

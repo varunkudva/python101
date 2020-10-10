@@ -22,4 +22,4 @@ def lis(arr, n):
 
 if __name__ == '__main__':
     arr = [9, 1, 3, 7, 5, 6, 20]
-    print "LIS:", lis(arr, len(arr))
+    print("LIS:", lis(arr, len(arr)))

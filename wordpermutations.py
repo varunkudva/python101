@@ -1,6 +1,6 @@
 """
 Problem:
-All permutations of a given
+All permutations of a given string with unique characters
 
 
 
@@ -79,7 +79,8 @@ SWAP WAY
 
 def test_driver():
     print("Permute without duplicates: Input: abc")
-    permute_without_dup('abc')
+    permute_without_dup('abcd')
+    print("\n")
     print("Permute with duplicates: Input: aabc")
     permute_with_dup('aabc')
 
