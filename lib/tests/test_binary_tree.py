@@ -1,4 +1,5 @@
 import unittest
+
 from lib.binarytree import BinaryTree
 
 

@@ -33,7 +33,7 @@ def merge(arr, low, mid, high):
 
 def sort(arr, low, high):
     if low < high:
-        mid = (low + high) / 2
+        mid = (low + high) // 2
         sort(arr, low, mid)
         sort(arr, mid+1, high)
         merge(arr, low, mid, high)

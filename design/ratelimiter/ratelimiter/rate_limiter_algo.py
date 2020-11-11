@@ -9,21 +9,22 @@ def get_current_ms():
 
 class TokenBucketLimiter(object):
 
-    def __init__(self, capacity, rate):
+    def __init__(self, initial_capacity, rate):
         """
 
         :param capacity: Initial capacity
         :param rate: rate of requests per second
         """
-        self.max_bucket_size = capacity
+        self.max_bucket_size = initial_capacity
         self.cur_bucket_size = self.max_bucket_size
         self.refill_rate = rate
         self.last_refill_ts = get_current_ms()
 
     def refill(self):
-        refill_tokens = ((get_current_ms() - self.last_refill_ts) * self.refill_rate)\
-                        // 1000 # ms_per_second
-        return refill_tokens
+        refill_tokens = ((get_current_ms() - self.last_refill_ts) * self.refill_rate) \
+                        // 1000  # ms_per_second
+        print(refill_tokens)
+        self.cur_bucket_size += refill_tokens
 
     def allow_request(self):
         """
@@ -36,29 +37,13 @@ class TokenBucketLimiter(object):
             return True
         return False
 
-class ApiCache(object):
-    """
-    key: api
-    value: ratelimiter
-    """
-    def __init__(self):
-        self.api_cache = dict() #
-
-    def get_rate_limiter(self, api):
-        rlim = None
-        if api in self.api_cache:
-            rlim = self.api_cache[api]
-        else:
-           rlim = self.api_cache[api] = TokenBucketLimiter()
-        return rlim
-
 def main():
     client_cache = defaultdict(ApiCache)
 
-    rate_limiter = TokenBucketLimiter(10, 10)
+    rate_limiter = TokenBucketLimiter(0, 10)
     for reps in range(20):
         print("timestamp: {} allowed {}".format(get_current_ms(), rate_limiter.allow_request()))
-        time.sleep(50/1000)
+        time.sleep(0.01)
 
 """
 (1) Fetch client identifier and api from request
