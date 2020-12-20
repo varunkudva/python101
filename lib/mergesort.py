@@ -4,17 +4,17 @@ Merge sort algorithm
 Time: O(nlogn) worst and average
 Space: O(n)
 """
-def merge(arr, low, mid, high):
+def merge(arr, left, mid, right):
     """
     Copy array elements into temporary array, so that sorted elements can
     be directly merged back into original array.
     """
     temp = arr[:]
-    i = low
-    j = mid+1
-    k = low
+    i = left
+    j = mid + 1
+    k = left
 
-    while i <= mid and j <= high:
+    while i <= mid and j <= right:
         if temp[i] < temp[j]:
             arr[k] = temp[i]
             i += 1
@@ -23,7 +23,7 @@ def merge(arr, low, mid, high):
             j += 1
         k += 1
 
-    # No need to copy j -> high as its already
+    # No need to copy j -> right as its already
     # in the original array in its position
     for i in range(i, mid+1):
         arr[k] = temp[i]
@@ -31,12 +31,14 @@ def merge(arr, low, mid, high):
 
     return arr
 
-def sort(arr, low, high):
-    if low < high:
-        mid = (low + high) // 2
-        sort(arr, low, mid)
-        sort(arr, mid+1, high)
-        merge(arr, low, mid, high)
+
+def merge_sort(arr, left, right):
+    if left < right:
+        mid = (left + right) // 2
+        merge_sort(arr, left, mid)
+        merge_sort(arr, mid + 1, right)
+        # merge
+        merge(arr, left, mid, right)
 
     return arr
 

@@ -68,7 +68,7 @@ def quick_select(arr, left, right, k):
 
 def kth_smallest(arr, left, right, k):
     """
-    This uses the itemct algorithm to find
+    This uses the quickselect algorithm to find
     smallest
     """
     while left <= right:

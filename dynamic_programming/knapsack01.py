@@ -48,6 +48,40 @@ def knapsack(w, v, weight):
     return val[items][weight]
 
 
+def solve_knapsack(weights, profit, capacity):
+    """
+    dp(i,j) => maximum profit from i items for capacity j
+    dp(i,j) = max(dp(i-1,j), dp(i-1, j-w[i]) + value[i])
+    dp(i,0) = 0
+    orig problem:
+    dp(m,c)
+    dp -> capacity+1
+    item 0 1 2 3 4
+    0    0
+    """
+
+    def list_items(dp, items, capacity, weight):
+        if items == 0 or capacity == 0:
+            return
+        if dp[items][capacity] == dp[items - 1][capacity]:
+            list_items(dp, items - 1, capacity, weight)
+        else:
+            list_items(dp, items - 1, capacity - weight[items - 1], weight)
+            print(items, profit[items - 1])
+
+    items = len(weights)
+    dp = [[0] * (capacity + 1) for _ in range(items + 1)]
+    for i in range(1, items + 1):
+        for j in range(1, capacity + 1):
+            if weights[i - 1] > j:
+                dp[i][j] = dp[i - 1][j]
+            else:
+                dp[i][j] = max(dp[i - 1][j - weights[i - 1]] + profit[i - 1], dp[i - 1][j])
+
+    print("Items in bag: ", list_items(dp, items, capacity, weight))
+    return dp[-1][-1]
+
+
 class Solution:
     def list_items(self, res, dp, item, capacity, weight):
         if item <= 0 or capacity <= 0:
@@ -98,4 +132,10 @@ class TestKnapsack(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main(verbosity=3)
+    # unittest.main(verbosity=3)
+
+    weight = [2, 3, 1, 4]
+    profit = [4, 5, 3, 7]
+    capacity = 5
+    res = solve_knapsack(weight, profit, capacity)
+    print(res)

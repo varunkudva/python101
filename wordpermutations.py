@@ -47,6 +47,10 @@ def permute_with_dup(s):
     def permute(res, idx, n):
         if idx == n:
             print(''.join(res), end=' ')
+        # keep a dictionary of the characters and iterate over
+        # the dictionary for generating unique permutations
+        # when duplicates are allowed
+
         for char, count in list(char_map.items()):
             if count > 0:
                 char_map[char] = count - 1

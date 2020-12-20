@@ -7,6 +7,7 @@ from collections import defaultdict
 
 CYCLES_DG = "../tests/cycles.txt"
 TOPO_DAG = "../tests/topo.txt"
+WEIGHTED_GRAPH = "../tests/weight.txt"
 
 class Edge():
     def __init__(self, v, w, weight):
@@ -190,10 +191,11 @@ if __name__ == '__main__':
     with open(filename) as fd:
         V = int(fd.readline())
         E = int(fd.readline())
-        g = Graph(V)
+        g = Wgraph(V)
         for lines in range(E):
-            u, v = tuple(map(int, fd.readline().split()))
-            g.add_edge(u, v)
+            u, v, weight = tuple(map(int, fd.readline().split()))
+            e = Edge(u, v, weight)
+            g.add_edge(e)
 
         #g.dfs(0)
         g.has_cycle()

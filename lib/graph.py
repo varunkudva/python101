@@ -1,5 +1,5 @@
 """
-graph.py: Simple graph module
+graph.py: Simple directed graph module
 Ref: Algorithms by Robert Sedgewick
 https://algs4.cs.princeton.edu/41graph/
 """
@@ -12,14 +12,14 @@ TOPO_DAG = "../tests/topo.txt"
 CYCLES_G = "../tests/cycles_ug.txt"  # undirected
 
 
-class Graph():
-    '''
-    Directed graph(Directed Graph) without weights associated.
+class Digraph:
+    """
+    Directed graph(Directed Digraph) without weights associated.
 
     Represented as adjacency list with each
     node as a key in dict and a list of edges
     as values
-    '''
+    """
 
     def __init__(self, v):
         self.adj = defaultdict(list)
@@ -75,10 +75,10 @@ class Graph():
         for v in range(self.vertices):
             self.visited = [False] * self.vertices
             self.count = 0  # initialize connected vertex count
-            print("DFS from {}:".format(v), end=' ')
+            print("DFS from {}: ".format(v), end=' ')
             self.dfs(v)
             print()
-            print("Vertices connected {}".format(v, self.count))
+            # print("Vertices connected {}".format(v, self.count))
 
     def dfs(self, u):
         """ DFS from source vertex u. Count keeps track of number
@@ -180,10 +180,10 @@ if __name__ == '__main__':
     with open(filename) as fd:
         V = int(fd.readline())
         E = int(fd.readline())
-        g = Graph(V)
+        g = Digraph(V)
         for lines in range(E):
             u, v = tuple(map(int, fd.readline().split()))
             g.add_edge(u, v)
 
-        print("DFS from vertex 0:", g.dfs(0))
+        g.dfs_search()
         g.directed_cycle()

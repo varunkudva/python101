@@ -18,6 +18,42 @@ This can be build bottom up in DP fashion by defining S[i][j]
 
         Answer would be in S[n][m]
 """
+
+
+def subset_sum_solve(arr, sum):
+    # memo[i][s] = True if there is a subset of sum s includes i
+    memo = [[-1] * (sum + 1) for _ in range(len(arr))]
+
+    def subset_sum_recursive(arr, sum, idx):
+        if sum == 0:
+            return True
+        if idx == len(arr):
+            return False
+
+        if memo[idx][sum] == -1:
+            # subset sum including this item at idx
+            include, exclude = False, False
+            if arr[idx] <= sum:
+                include = subset_sum_recursive(arr, sum - arr[idx], idx + 1)
+
+            exclude = subset_sum_recursive(arr, sum, idx + 1)
+            memo[idx][sum] = include or exclude
+            return memo[idx][sum]
+        else:
+            return memo[idx][sum]
+
+    return subset_sum_recursive(arr, sum, 0)
+
+
+def subset_sum_dp(arr, sum):
+    """
+    dp(i,j) => if subset of capacity j includes element i
+    :param arr:
+    :param sum:
+    :return:
+    """
+
+
 def print_set(arr, res, s, i, j, n, sum):
     if sum == 0:
         print(res)
@@ -26,7 +62,7 @@ def print_set(arr, res, s, i, j, n, sum):
         return
 
     if s[i][j] == 1:
-        if arr[i] <= j and s[i-1][j-arr[i]]:
+        if arr[i] <= j and s[i - 1][j - arr[i]]:
             res.insert(0, arr[i])
             print_set(arr, res, s, i-1, j-arr[i], n, sum-arr[i])
             res.pop(0)
@@ -58,5 +94,6 @@ def subset_sum_dp(arr, m, n):
 
 if __name__ == '__main__':
     A = [3, 34, 4, 12, 5, 2]
-    sum = 9
-    print("subset exists:", subset_sum_dp(A, sum, len(A)))
+    sum = 8
+    print("subset exists (recursive):", subset_sum_solve(A, sum))
+    # print("subset exists:", subset_sum_dp(A, sum, len(A)))
