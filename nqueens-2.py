@@ -15,34 +15,37 @@ Compexity:
 Source:
 None
 """
+def can_place(res, row, col):
+    for prev_row in range(row):
+        prev_col = res[prev_row]
+        if prev_col == col:
+            # there is a queen in same column in previous
+            # rows
+            return False
 
-
-# this is the safety condition function.
-def can_place(matrix, row, col):
-    ''' if any of the previous queens is
-    on the same row
-    '''
-    for i in range(0, row):
-        if matrix[i] == col or matrix[i] == col - row + i or matrix[i] == col + row - i:
+        # check if any of the previous queens is in the
+        # same diagonal as current queen, same diagonal has same slope
+        # (y2-y1) == (x2 - x1) since slope is 1 in a grid diagonal
+        row_dist = abs(row - prev_row)
+        col_dist = abs(col - prev_col)
+        if row_dist == col_dist:
             return False
     return True
 
-# each queen denotes index of a particular row
-def place_queen(sol, queen, N):
-    # if all queens placed, return True.
-    if queen == N:
-        print sol
-        return True
-    else:
-        for col in range(0, N):
-            if can_place(sol, queen, col):
-                sol[queen] = col
-                if place_queen(sol, queen+1, N):
-                    return True
-                sol[queen] = -1
+def solve_queens(n):
+    def helper(res, idx, n):
+        if idx == n:
+            out.append(res[:])
 
+        for col in range(n):
+            if can_place(res, idx, col):
+                res[idx] = col
+                helper(res, idx+1, n)
 
-N = int(raw_input())
-# solution matrix
-sol = [-1] * N
-place_queen(sol, 0, N)
+    out = [] # stores the different grid placement possible
+    res = [0] * n
+    helper(res, 0, n)
+    return out
+
+if __name__ == '__main__':
+    print(solve_queens(5))

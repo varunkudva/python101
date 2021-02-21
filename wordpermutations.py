@@ -36,21 +36,40 @@ def permute_without_dup(s):
 
     permute(res, s, 0, n)
 
+def permute2_without_dup(s):
+    """
+    This is similar to previous one but uses append/pop instead
+    of passing indexes
+    append/pop way
+    :param s:
+    :return:
+    """
+    res, out = [], []
+    n = len(s)
+
+    def helper(s, res, n):
+        if len(res) == n:
+            out.append(''.join(res[:]))
+
+        for i, c in enumerate(s):
+            res.append(c)
+            helper(s[:i]+s[i+1:], res, n)
+            res.pop()
+
+    helper(s, res, n)
+    print(out)
 
 def permute_with_dup(s):
     n = len(s)
     res = [''] * n
     char_map = Counter(s)
 
-    # print char_counts
-
     def permute(res, idx, n):
-        if idx == n:
-            print(''.join(res), end=' ')
         # keep a dictionary of the characters and iterate over
         # the dictionary for generating unique permutations
         # when duplicates are allowed
-
+        if idx == n:
+            print(''.join(res), end=' ')
         for char, count in list(char_map.items()):
             if count > 0:
                 char_map[char] = count - 1
@@ -79,11 +98,33 @@ def permumute_with_dup_bfs(s):
 """
 SWAP WAY
 """
+n = len(nums)
+
+def permute_nums(nums):
+    out = []
+    res = []
+    n  = len(nums)
+    def helper(k, res):
+        if k == len(nums):
+            out.append(nums[:])
+            return
+
+        for i in range(k, len(nums)):
+            nums[k], nums[i] = nums[i], nums[k]
+            do_permute_v2(res, nums, k + 1, n)
+            nums[k], nums[i] = nums[i], nums[k]
+
+
+    helper(0, res)
+    return out
 
 
 def test_driver():
-    print("Permute without duplicates: Input: abc")
+    print("Permute without duplicates: Input: abcd")
     permute_without_dup('abcd')
+    print("\n")
+    print("Permute2 without duplicates: Input: abcd")
+    permute2_without_dup('abcd')
     print("\n")
     print("Permute with duplicates: Input: aabc")
     permute_with_dup('aabc')

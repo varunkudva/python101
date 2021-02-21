@@ -32,25 +32,41 @@ def coin_change_r(amt, m, coins):
     else:
         return coin_change_r(amt, m - 1, coins) + coin_change_r(amt - coins[m - 1], m, coins)
 
-
-def coin_change_dp(n, m, coins):
+def coin_change_dp(change, denominations):
     """
-    :param n: total coin change
-    :param m: no. of coins
-    :param coins: list of m coins with corresponding value
+    total no. of ways to make 'change' with denominations
+    :param change:
+    :param denominations:
     :return:
+    1->2->3...->n
+    dp(i,j) => no. of ways to make change j with i denominations
+    dp(i,j) = dp(i, j-d[i]) if d[i] <= j
+            = dp(i-1, j)
     """
-    c = [[0] * (n + 1) for _ in range(m + 1)]
-    for i in range(1, m + 1):
-        for j in range(0, n + 1):
-            if coins[i - 1] < j:
-                c[i][j] = c[i - 1][j] + c[i][j - coins[i - 1]]
-            elif coins[i - 1] == j:
-                c[i][j] = c[i - 1][j] + 1
-            else:
-                c[i][j] = c[i - 1][j]
-    return c[m][n]
+    dlen = len(denominations)
+    dp = [[0] * (change+1) for _ in range(dlen+1)]
+    for i in range(dlen+1):
+        dp[i][0] = 1
 
+    for i in range(1, len(denominations)+1):
+        for j in range(1, change+1):
+            # excluding this denomination
+            dp[i][j] = dp[i - 1][j]
+
+            if denominations[i-1] <= j:
+                # include this denomination
+                dp[i][j] += dp[i][j-denominations[i-1]]
+
+    return dp[len(denominations)][change]
+
+def coin_change_dp_2(change, denominations):
+    dp = [0] * (change+1)
+    dp[0] = 1
+    for i in range(1, change+1):
+        for j in range(len(denominations)):
+            if denominations[j] <= i:
+                dp[i] += dp[i-denominations[j]]
+    return dp[change]
 
 if __name__ == '__main__':
     # n, m = (map(int, raw_input().strip().split(' ')))
@@ -58,4 +74,5 @@ if __name__ == '__main__':
     n = 4
     coins = [1, 2, 3]
     print("Recursive no. of ways: {}".format(coin_change_r(n, len(coins), coins)))
-    print("DP no. of ways: {}".format(coin_change_dp(n, len(coins), coins)))
+    print("DP no. of ways: {}".format(coin_change_dp(n, coins)))
+    print("DP no. of ways: {}".format(coin_change_dp_2(n, coins)))

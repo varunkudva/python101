@@ -66,7 +66,12 @@ class Digraph:
             print(u)
             for v in self.adj[u]:
                 if visited[v] is False:
-                    # mark and append to queue
+                    """
+                    This is important. We need to mark the node visited
+                    and append to queue as its possible multiple nodes in
+                    the current level may be pointing to this node and
+                    we dont want duplicate nodes from next level in queue
+                    """
                     visited[v] = True
                     queue.append(v)
 

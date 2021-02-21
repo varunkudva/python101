@@ -66,11 +66,12 @@ def quick_select(arr, left, right, k):
     else:
         return quick_select(arr, p+1, right, k)
 
-def kth_smallest(arr, left, right, k):
+def kth_smallest(arr, k):
     """
     This uses the quickselect algorithm to find
     smallest
     """
+    left, right = 0, len(arr)-1
     while left <= right:
         p = partition(arr, left, right, True)
         if p == k-1:
@@ -82,7 +83,7 @@ def kth_smallest(arr, left, right, k):
 
 def kth_largest(arr, left, right, k):
     """
-    This uses the itemct algorithm to find
+    This uses the quickselect algorithm to find
     smallest
     """
     while left <= right:

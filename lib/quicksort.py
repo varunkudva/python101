@@ -3,11 +3,8 @@ Quicksort library
 """""""""""""""""""""
 
 
-def swap(arr, i, j):
-    temp = arr[i]
-    arr[i] = arr[j]
-    arr[j] = temp
-
+def swap(arr, left, right):
+    arr[left], arr[right] = arr[right], arr[left]
 
 def partition(arr, left, right):
     """
@@ -27,16 +24,24 @@ def partition(arr, left, right):
     swap(arr, part_idx, right)
     return part_idx
 
-def qsort(arr, left, right):
+def qs_helper(arr, left, right):
     """ Quick sort algorithm """
-    if left < right:
-        part_idx = partition(arr, left, right)
-        qsort(arr, left, part_idx-1)
-        qsort(arr, part_idx+1, right)
+    # base case
+    if left >= right:
+        return
 
-    return arr
+    # divide
+    part_idx = partition(arr, left, right)
+    qs_helper(arr, left, part_idx - 1)
+    qs_helper(arr, part_idx + 1, right)
+
+    # conquer
+
+def quicksort(arr):
+    # base case
+    qs_helper(arr, 0, len(arr)-1)
 
 if __name__ == '__main__':
     arr = [4, 9, 6, 8, 5, 2, 3]
-    qsort(arr, 0, len(arr)-1)
+    quicksort(arr)
     print(arr)

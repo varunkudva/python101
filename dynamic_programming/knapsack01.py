@@ -114,28 +114,77 @@ class Solution:
 
         return dp[items][capacity], self.list_items(res, dp, items, capacity, weight)
 
+    def knapsack_recursive(self, profit, weight, capacity):
+        """
+        exclude include recursive pattern
+        """
+        res = []
+        out = []
+        max_profit = 0
+        def helper(idx, cur_profit, capacity):
+            nonlocal max_profit
+            if idx == len(profit) or capacity < 0:
+                if cur_profit > max_profit:
+                    max_profit = cur_profit
+                    out.append(res[:])
+                return
 
-class TestKnapsack(unittest.TestCase):
-    def test_sample_1(self):
-        profit = [10, 40, 30, 50]
-        weight = [5, 4, 6, 3]
-        capacity = 10
-        expected = (90, [2, 4])
-        # print(knapsack(w, v, 10))
-        self.assertEqual(Solution().solve_knapsack(profit, weight, capacity), expected, "Expected: {}".format(expected))
+            # exclude current item and calculate profit
+            helper(idx+1, cur_profit, capacity)
 
-    def test_sample_2(self):
-        weight = [2, 3, 1, 4]
-        profit = [4, 5, 3, 7]
-        capacity = 5
-        self.assertEqual(Solution().solve_knapsack(profit, weight, capacity), (10, [3, 4]))
+            # include current item and calculate
+            if weight[idx] <= capacity:
+                res.append(idx)
+                helper(idx+1, cur_profit+profit[idx], capacity-weight[idx])
+                res.pop()
+
+        helper(0, 0, capacity)
+        return (max_profit, out)
+
+    def knapsack(self, profit, weight, capacity):
+        """
+        Guess: whether to include or not include first(last) item # choices 2
+        subproblems: max_profit[i+1:,x] => value for suffix given knapsack of size X
+
+        dp(i, c) => maximum profit with i items for capacity c
+        dp(i,c) = max(dp(i-1, c),dp(i-1, c-w[i])
+        """
+        items = len(profit)
+        dp = [[0] * (capacity+1) for _ in range(items+1)]
+        for i in range(1, items+1):
+            for j in range(1, capacity+1):
+                dp[i][j] = max(dp[i-1][j], dp[i-1][j-weight[i-1] + profit[i-1]])
+
+        return dp[items][capacity]
+
+
+
+
+
+# class TestKnapsack(unittest.TestCase):
+#     def test_sample_1(self):
+#         profit = [10, 40, 30, 50]
+#         weight = [5, 4, 6, 3]
+#         capacity = 10
+#         expected = (90, [2, 4])
+#         # print(knapsack(w, v, 10))
+#         self.assertEqual(Solution().solve_knapsack(profit, weight, capacity), expected, "Expected: {}".format(expected))
+#
+#     def test_sample_2(self):
+#         weight = [2, 3, 1, 4]
+#         profit = [4, 5, 3, 7]
+#         capacity = 5
+#         self.assertEqual(Solution().solve_knapsack(profit, weight, capacity), (10, [3, 4]))
 
 
 if __name__ == '__main__':
     # unittest.main(verbosity=3)
 
-    weight = [2, 3, 1, 4]
-    profit = [4, 5, 3, 7]
-    capacity = 5
-    res = solve_knapsack(weight, profit, capacity)
+    profit = [10, 40, 30, 50]
+    weight = [5, 4, 6, 3]
+    capacity = 10
+    expected = (90, [2, 4])
+    res = Solution().solve_knapsack(profit, weight, capacity)
+    print(res)
+    res = Solution().knapsack_recursive(profit, weight, capacity)
     print(res)
